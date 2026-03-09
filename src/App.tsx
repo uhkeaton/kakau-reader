@@ -342,8 +342,13 @@ export function Line({ text }: { text: string }) {
                 {leading}
                 <span className="hover:underline hover:opacity-50">{text}</span>
                 {trailing}
-                <rt style={{ opacity: `${opacity}%`, userSelect: "none" }}>
-                  {showRuby ? word : " "}
+                <rt
+                  style={{
+                    opacity: showRuby ? `${opacity}%` : "0%",
+                    userSelect: "none",
+                  }}
+                >
+                  {word}
                 </rt>
               </ruby>
             </span>
