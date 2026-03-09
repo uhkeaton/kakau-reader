@@ -78,16 +78,16 @@ export function ModeTKButtons() {
     <BinaryButtons
       left={
         <span className="w-16 lexend-400 text-xl">
-          T
+          K
         </span>
       }
       right={
-        <span className="w-16 lexend-400 text-xl">K</span>
+        <span className="w-16 lexend-400 text-xl">T</span>
       }
-      onClickLeft={() => setModeTK("t")}
-      onClickRight={() => setModeTK("k")}
-      leftClass={modeTK === "t" ? "text-white bg-[#56d926]" : "text-neutral-500"}
-      rightClass={modeTK === "k" ? "text-white bg-[#56d926]" : "text-neutral-500"}
+      onClickLeft={() => setModeTK("k")}
+      onClickRight={() => setModeTK("t")}
+      leftClass={modeTK === "k" ? "text-white bg-[#56d926]" : "text-neutral-500"}
+      rightClass={modeTK === "t" ? "text-white bg-[#56d926]" : "text-neutral-500"}
     />
   );
 }

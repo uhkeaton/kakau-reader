@@ -7,6 +7,15 @@ const labels = {
     k: "kakau",
     t: "katau",
   },
+
+  "Ke Kakaupii": {
+    k: "Ke Kakaupii",
+    t: "Ta Kataupii",
+  },
+  "Ka Pela Ana": {
+    k: "Ka Pela Ana",
+    t: "Ta Pela Ana",
+  },
   "E hookomo i ka olelo i luna": {
     k: "E hookomo i ka olelo i luna",
     t: "E hootomo i ta olelo i nuna",

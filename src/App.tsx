@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { shouldKnow, shouldShow } from "./constants";
 import cx from "classnames";
 import { IconCheck } from "./material/IconCheck";
-import { Kahapii } from "./material/Kahapii";
+import { Kakaupii } from "./material/Kahapii";
 import { IconEdit } from "./material/IconEdit";
 import { IconFullscreen } from "./material/IconFullscreen";
 import { IconPrint } from "./material/IconPrint";
@@ -21,7 +21,6 @@ import {
   removeHawaiianDiacritics,
   removePunctuation,
 } from "./helpers";
-import { SettingsDrawer } from "./SettingsDrawer";
 import { SmVis, Block } from "./Vis";
 import { StickyNav } from "./StickyHeader";
 import { Title } from "./Title";
@@ -31,6 +30,8 @@ import { label } from "./labels";
 import { IconDelete } from "./material/IconDelete";
 import { AboutDialog } from "./AboutDialog";
 import { APA } from "./Quote";
+import { Sidebar } from "./Sidebar";
+import { Levels } from "./Levels";
 // import { Flyer } from "./Flyer";
 
 alertIfNotAlphabetical();
@@ -45,20 +46,20 @@ function App() {
         "relative px-8 pt-8",
 
         {
-          "sm:ml-72 print:ml-0": isSplitView,
+          "sm:ml-96 print:ml-0": isSplitView,
         },
       )}
     >
       <div
         className={cx(
-          "sm:w-72 w-full print:hidden fixed left-0 top-0 z-12 h-dvh",
+          "sm:w-96 w-full print:hidden fixed left-0 top-0 z-12 h-dvh",
           {
             hidden: !isSplitView,
             block: isSplitView,
           },
         )}
       >
-        <SettingsDrawer />
+        <Sidebar />
       </div>
       <div
         className={cx("m-auto max-w-5xl", {
@@ -66,8 +67,8 @@ function App() {
         })}
       >
         <Block when={!isFullscreen}>
-          <div className="flex justify-between mb-4 print:hidden">
-            <Kahapii />
+          <div className="flex justify-between mb-2 print:hidden">
+            <Kakaupii />
             <div className="print:hidden flex items-center gap-4">
               <AboutDialog />
               <div
@@ -123,7 +124,7 @@ function StorySelect() {
           <option aria-label="None" value="" />
           {storyGroups.map((group) => {
             return (
-              <optgroup label="Mary Pukui (1933)">
+              <optgroup label={group.title}>
                 {group.stories.map((story) => {
                   return <option value={story.text}>{story.title}</option>;
                 })}
@@ -250,7 +251,7 @@ function Body() {
           </Button>
         </div>
       </div>
-      <div className="min-h-[80dvh]">
+      <div className="min-h-[80dvh] cursor-default">
         {!text && <APA>{label(modeTK, "E hookomo i ka olelo i luna")}</APA>}
         {text.split("\n").map((line) => {
           return <Line text={line} />;
@@ -290,7 +291,13 @@ function getFontSize(num: number): number {
 }
 
 export function Line({ text }: { text: string }) {
-  const { showFurigana, fontSize, visibilitySettings } = useGlobal();
+  const {
+    showFurigana,
+    fontSize,
+    visibilitySettings,
+    setQuery,
+    setIsSplitView,
+  } = useGlobal();
   const opacity = showFurigana ? 40 : 0;
 
   return (
@@ -324,10 +331,16 @@ export function Line({ text }: { text: string }) {
 
         return (
           <>
-            <span className="inline-block">
+            <span
+              onClick={() => {
+                setIsSplitView("dictionary");
+                setQuery(removed);
+              }}
+              className="inline-block"
+            >
               <ruby>
                 {leading}
-                {text}
+                <span className="hover:underline hover:opacity-50">{text}</span>
                 {trailing}
                 <rt style={{ opacity: `${opacity}%`, userSelect: "none" }}>
                   {showRuby ? word : " "}
@@ -353,9 +366,11 @@ function BottomNav() {
 
       <div className="flex gap-2 justify-between print:hidden pt-4 pb-4">
         <div className="flex-0"></div>
-        <div className="flex-1 flex justify-center">
+        <div className="flex-1 flex justify-center gap-4 items-center">
           <SpaceBar />
+          <Levels />
         </div>
+
         <div className="flex-0"></div>
       </div>
     </div>
@@ -418,7 +433,7 @@ function SpaceBar() {
       onClick={() => {
         setShowFurigana((s) => !s);
       }}
-      className="relative w-full bg-neutral-200 rounded-lg h-8 cursor-pointer min-w-40 max-w-sm"
+      className="select-none relative w-full bg-neutral-200 rounded-lg h-8 cursor-pointer min-w-40 max-w-sm"
     >
       &nbsp;
       <div

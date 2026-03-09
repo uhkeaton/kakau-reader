@@ -9,59 +9,49 @@ import {
 } from "./constants";
 import cx from "classnames";
 import { Title } from "./Title";
-import { IconClose } from "./material/IconClose";
 import { predicateSortWithoutOkina } from "./helpers";
 import { useGlobal, type VisibilitySettings } from "./useGlobal";
 import { OleloMaamauDialog } from "./OleloMaamauDialog";
+import { label } from "./labels";
+import { DrawerNav } from "./DrawerNav";
 
 export function SettingsDrawer() {
-  const { setIsSplitView } = useGlobal();
+  const { modeTK } = useGlobal();
   return (
     <>
       <div className="absolute w-full h-full border-r border-neutral-200 inset-0 bg-white/98 overscroll-contain overflow-y-auto">
         <div className="sticky top-0 w-full z-30 mr-px">
-          <div className=" w-full flex justify-between p-4 bg-white/95">
-            <div>
-              <ModeTKButtons />
-            </div>
-            <div
-              className="opacity-50 hover:opacity-100 cursor-pointer"
-              onClick={() => {
-                setIsSplitView(false);
-              }}
-            >
-              <IconClose className="w-8" />
-            </div>
-          </div>
+          <DrawerNav />
           <hr className="opacity-15" />
         </div>
-
+        <div className="p-4 py-8">
+          <div className="mb-4">
+            <Title>{label(modeTK, "Ka Pela Ana")}</Title>
+          </div>
+          <ModeTKButtons />
+        </div>
+        <hr className="opacity-20 mb-4" />
+        <div className="p-4">
+          <Title>{label(modeTK, "Ke Kakaupii")}</Title>
+        </div>
         <div className="p-4">
           <Section
             title={"Akaaka Ole"}
-            id="closedClassMoreCollisions"
+            ids={["closedClassMoreCollisions"]}
             items={closedClassMoreCollisionsLower}
           />
           <Section
             title={"Akaaka Iki"}
-            id="closedClassSomeCollisions"
+            ids={["closedClassSomeCollisions"]}
             items={closedClassSomeCollisionsLower}
           />
-
           <Section
             title={"Moakaaka"}
-            id="closedClassNoCollisions"
+            ids={["openClassLevelOne", "closedClassNoCollisions"]}
             items={closedClassNoCollisionsLower}
-          />
-          <Section title={"Olelo Maamau"} id="openClassLevelOne">
+          >
             <OleloMaamauDialog />
           </Section>
-
-          <Section
-            title="Hoonani"
-            id="setting-show-mai-group"
-            items={niceToShowLower}
-          />
         </div>
         <hr className="opacity-20 mx-16" />
 
@@ -89,6 +79,23 @@ export function SettingsDrawer() {
               })}
             </div>
           </div>
+          <div className="p-4">
+            <div className="mb-2 opacity-50">
+              <Title>{"Okina Ole"}</Title>
+            </div>
+            <div className="mb-8 relative">
+              {["moakaaka", "akaaka", "hoaaloha", "huaale", "lanaau"].map(
+                (item) => {
+                  return <Item text={item} disabled={true} />;
+                },
+              )}
+            </div>
+          </div>
+          <Section
+            title="Hoonani"
+            ids={["setting-show-mai-group"]}
+            items={niceToShowLower}
+          />
         </div>
         {/* <hr className="opacity-20 mx-16" /> */}
         <div className="p-4">
@@ -142,33 +149,37 @@ function Item({ text, disabled }: { text: string; disabled?: boolean }) {
 export function Section({
   title,
   items,
-  id,
+  ids,
   children,
   disableSelect,
 }: {
   title?: string;
   items?: string[];
-  id: keyof VisibilitySettings;
+  ids: (keyof VisibilitySettings)[];
   children?: React.ReactNode;
   disableSelect?: boolean;
 }) {
   const { visibilitySettings, setVisibilitySettings, setShowFurigana } =
     useGlobal();
 
-  const checked = visibilitySettings[id];
+  const checked = ids.every((id) => visibilitySettings[id]);
 
   return (
     <div
       onClick={() => {
         if (disableSelect) return;
         setShowFurigana(true);
-        setVisibilitySettings((s) => ({ ...s, [id]: !s[id] }));
+
+        setVisibilitySettings((s) => ({
+          ...s,
+          ...Object.fromEntries(ids.map((id) => [id, !checked])),
+          // [id]: !s[id]
+        }));
       }}
       className={cx("mb-8 relative border border-neutral-200 rounded p-4", {
         "bg-cyan-50": !disableSelect && checked,
         "cursor-pointer": !disableSelect,
       })}
-      
     >
       {!disableSelect && (
         <div className="absolute top-0 right-0">
@@ -177,7 +188,11 @@ export function Section({
             onChange={(e) => {
               if (disableSelect) return;
               setShowFurigana(true);
-              setVisibilitySettings((s) => ({ ...s, [id]: e.target.checked }));
+              setVisibilitySettings((s) => ({
+                ...s,
+                ...Object.fromEntries(ids.map((id) => [id, e.target.checked])),
+                // [id]: e.target.checked
+              }));
             }}
           />
         </div>
@@ -186,12 +201,13 @@ export function Section({
       {/*  */}
       {title && (
         <div
-          className={cx("mb-2 text-black", { "opacity-50": !checked && !disableSelect })}
+          className={cx("mb-2 text-black", {
+            "opacity-50": !checked && !disableSelect,
+          })}
         >
           <Title>{title}</Title>
         </div>
       )}
-      {children}
       {items?.length && (
         <div
           className={cx({
@@ -207,6 +223,7 @@ export function Section({
           )}
         </div>
       )}
+      {children}
     </div>
   );
 }

@@ -16,6 +16,7 @@ function generate(upper: string[]) {
 
 export const [niceToShow, niceToShowLower] = generate([
   // words
+  "Aʻo",
   "Iʻa",
   // "Aʻu",
   "Iaʻu",
@@ -70,8 +71,8 @@ export const [closedClassNoCollisions, closedClassNoCollisionsLower] = generate(
 export const [closedClassSomeCollisions, closedClassSomeCollisionsLower] =
   generate([
     "ʻAi",
-    "Aʻo",
     "Aʻe",
+    "ʻAe",
 
     // some collisions
     // some collisions
@@ -89,7 +90,9 @@ export const [closedClassSomeCollisions, closedClassSomeCollisionsLower] =
     "Inā",
     "Kāna",
     "Kāua",
+    "Nāna",
     "Nānā",
+    "Nāu",
     "Naʻe",
     "Pēlā",
     // "Pela",
@@ -132,10 +135,6 @@ export const [closedClassMoreCollisions, closedClassMoreCollisionsLower] =
     // "Ma",
     "Nā",
     // "Na",
-    "Nāu",
-    // "Nau",
-    "Nāna",
-    // "Nānā",
     "Neʻi",
     // "Nei",
     "Nō",

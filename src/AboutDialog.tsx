@@ -39,14 +39,14 @@ export function AboutDialog() {
           <DialogContentText id="alert-dialog-description">
             <div className="mb-4">Aloha! Mahalo keia komo ana mai.</div>
             <div className="mb-4">
-              Ua hanaia keia mikini i mea e kakoo ai i na hamana ke heluhelu me
+              Ua kukulu ia keia mikini i mea e kakoo ai i na hamana ke heluhelu me
               ka okina kahako ole. Me keia mikini nei hiki ke hoohuna i ka okina
               a me ke kahako. Hiki no ke heluhelu me kela kekahi.
             </div>
             <div className="mb-4">
-              E hoohana ana ka huaolelo o <APA>kahapii</APA> ma kahi o ka
+              E hoohana ana ia ka huaolelo o <APA>kakaupii</APA> ma kahi o ka
               huaolelo o <APA>furigana</APA> ma ka olelo Kepani. Ua like no ka
-              laua hana. Na’u i haku i keia huaolelo hou o <APA>kahapii</APA>.
+              laua hana. Na’u i haku i keia huaolelo hou o <APA>kakaupii</APA>.
             </div>
             <hr className="opacity-20 pt-4 pb-2" />
             <div className="mb-4">

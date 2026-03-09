@@ -17,6 +17,7 @@ export type VisibilitySettings = {
 };
 
 function useGlobalContext() {
+  const [query, setQuery] = useState("");
   // const [modeTK, setModeTK] = useState<"t" | "k">("k");
   const [modeTK, setModeTK] = useLocalStorage<"t" | "k">(keyModeTK, "k");
 
@@ -45,7 +46,9 @@ function useGlobalContext() {
 
   const [isEditing, setIsEditing] = useState(!text);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isSplitView, setIsSplitView] = useState(false);
+  const [isSplitView, setIsSplitView] = useState<
+    "filter" | "dictionary" | false
+  >(false);
   const [fontSize, setFontSize] = useState(3);
 
   return {
@@ -67,6 +70,8 @@ function useGlobalContext() {
     setModeTK,
     visibilitySettings,
     setVisibilitySettings,
+    query,
+    setQuery,
   };
 }
 

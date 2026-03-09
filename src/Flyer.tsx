@@ -1,12 +1,12 @@
 import { Line } from "./App";
-import { Kahapii } from "./material/Kahapii";
+import { Kakaupii } from "./material/Kahapii";
 import QRCode from "react-qr-code";
 
 export function Flyer() {
   return (
     <div className="relative h-[1055px] flex flex-col justify-start bg-[#4b89e3]">
       <div className="bg-white p-8 pl-24 flex gap-2">
-        <Kahapii />
+        <Kakaupii />
         <div className="inline-block pt-4 ">
           <span className="mochiy-pop-one-regular text-3xl leading-0">
             .com
@@ -35,7 +35,7 @@ export function Flyer() {
             width: "160px",
             margin: "auto",
           }}
-          value={"https://kahapii.com"}
+          value={"https://kakaupii.com"}
           viewBox={`0 0 256 256`}
         />
       </div>

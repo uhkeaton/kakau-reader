@@ -7,6 +7,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Section } from "./SettingsDrawer";
 import {
+  closedClassNoCollisionsLower,
   namesUpper,
   numbersLower,
   openClassOkinaLevelOneLower,
@@ -25,13 +26,19 @@ export function OleloMaamauDialog() {
     setOpen(false);
   };
 
+  const length =
+    openClassOkinaLevelOneLower.length +
+    openClassVowelLevelOneLower.length +
+    numbersLower.length +
+    namesUpper.length;
+
   return (
     <React.Fragment>
-      <span onClick={handleClickOpen}>
-        <strong className="underline hover:opacity-100 opacity-50 cursor-pointer text-sm">
-          No ka Olelo Maamau
-        </strong>
-      </span>
+      <div className="my-2" onClick={handleClickOpen}>
+        <span className="underline hover:opacity-100 opacity-50 cursor-pointer font-semibold text-lg">
+          + {length} Olelo Maamau
+        </span>
+      </div>
       <Dialog
         fullWidth
         maxWidth={"md"}
@@ -49,28 +56,35 @@ export function OleloMaamauDialog() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
               <Section
                 title="Okina"
-                id="openClassLevelOne"
+                ids={["openClassLevelOne"]}
                 items={openClassOkinaLevelOneLower}
                 disableSelect
               />
               <Section
                 title="Kahako"
-                id="openClassLevelOne"
+                ids={["openClassLevelOne"]}
                 items={openClassVowelLevelOneLower}
                 disableSelect
               />
               <Section
                 title="Helu"
-                id="openClassLevelOne"
+                ids={["openClassLevelOne"]}
                 items={numbersLower}
                 disableSelect
               />
               <Section
                 title="Inoa"
-                id="openClassLevelOne"
+                ids={["openClassLevelOne"]}
                 items={namesUpper}
                 disableSelect
               />
+              <Section
+                title="Maamau"
+                ids={["closedClassNoCollisions"]}
+                items={closedClassNoCollisionsLower}
+                disableSelect
+              />
+              <div></div>
             </div>
           </DialogContentText>
         </DialogContent>

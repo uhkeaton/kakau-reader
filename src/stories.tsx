@@ -44,6 +44,36 @@ Me ta mino‘aka i pane ‘ia mai ai ‘oia, “‘A‘ohe u‘i palaualelo o Ka
       },
     ],
   },
+  {
+    title: "Papa Olelo",
+    stories: [
+      {
+        title: "No Ke Kino",
+        text: `poʻo
+lauoho
+iwi poʻo
+lae
+maka
+ihu
+puka ihu
+waha
+lehelehe
+alelo
+helehelena
+papālina
+pepeiao
+kuʻemaka 
+lihilihi
+niho
+ʻauwae
+maha
+puʻu
+ʻumiʻumi
+lolo`,
+        // no The Hawaiian Language (1939)
+      },
+    ],
+  },
 ] as const;
 
 export function isAStory(str: string) {
