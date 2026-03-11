@@ -36,17 +36,17 @@ export function SettingsDrawer() {
         </div>
         <div className="p-4">
           <Section
-            title={"Akaaka Ole"}
+            title={"1. Akaaka Ole"}
             ids={["closedClassMoreCollisions"]}
             items={closedClassMoreCollisionsLower}
           />
           <Section
-            title={"Akaaka Iki"}
+            title={"2. Akaaka Iki"}
             ids={["closedClassSomeCollisions"]}
             items={closedClassSomeCollisionsLower}
           />
           <Section
-            title={"Moakaaka"}
+            title={"3. Moakaaka"}
             ids={["openClassLevelOne", "closedClassNoCollisions"]}
             items={closedClassNoCollisionsLower}
           >
