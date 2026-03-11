@@ -25,7 +25,6 @@ import { SmVis, Block } from "./Vis";
 import { StickyNav } from "./StickyHeader";
 import { Title } from "./Title";
 import { storyGroups } from "./stories";
-import { alertIfNotAlphabetical } from "./niihauDictionary";
 import { label } from "./labels";
 import { IconDelete } from "./material/IconDelete";
 import { AboutDialog } from "./AboutDialog";
@@ -33,8 +32,6 @@ import { APA } from "./Quote";
 import { Sidebar } from "./Sidebar";
 import { Levels } from "./Levels";
 import { isLeftOpen, isRightOpen } from "./sidebar.helpers";
-
-alertIfNotAlphabetical();
 
 function LeftSidebarContainer() {
   const { isSplitView } = useGlobal();
