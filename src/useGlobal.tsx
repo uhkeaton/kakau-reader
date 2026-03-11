@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { isAStory } from "./stories";
 import { useLocalStorage } from "./useLocalStorage";
+import type { SplitView } from "./sidebar.helpers";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
 
 const keyText = "text";
 const keyModeTK = "mode-tk";
 const keyVisibiltySettings = "visibility-settings";
+
 
 export type VisibilitySettings = {
   "setting-show-mai-group": boolean;
@@ -46,9 +48,7 @@ function useGlobalContext() {
 
   const [isEditing, setIsEditing] = useState(!text);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isSplitView, setIsSplitView] = useState<
-    "filter" | "dictionary" | false
-  >(false);
+  const [isSplitView, setIsSplitView] = useState<SplitView>(false);
   const [fontSize, setFontSize] = useState(3);
 
   return {

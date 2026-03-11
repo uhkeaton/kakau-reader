@@ -32,9 +32,47 @@ import { AboutDialog } from "./AboutDialog";
 import { APA } from "./Quote";
 import { Sidebar } from "./Sidebar";
 import { Levels } from "./Levels";
-// import { Flyer } from "./Flyer";
+import { isLeftOpen, isRightOpen } from "./sidebar.helpers";
 
 alertIfNotAlphabetical();
+
+function LeftSidebarContainer() {
+  const { isSplitView } = useGlobal();
+
+  const isOpen = isLeftOpen(isSplitView);
+  return (
+    <div
+      className={cx(
+        "sm:w-96 w-full print:hidden fixed left-0 top-0 z-12 h-dvh",
+        {
+          hidden: !isOpen,
+          block: isOpen,
+        },
+      )}
+    >
+      <Sidebar />
+    </div>
+  );
+}
+
+function RightSidebarContainer() {
+  const { isSplitView } = useGlobal();
+
+  const isOpen = isRightOpen(isSplitView);
+  return (
+    <div
+      className={cx(
+        "sm:w-96 w-full print:hidden fixed right-0 top-0 z-12 h-dvh",
+        {
+          hidden: !isOpen,
+          block: isOpen,
+        },
+      )}
+    >
+      <Sidebar />
+    </div>
+  );
+}
 
 function App() {
   // return <Flyer />;
@@ -46,21 +84,12 @@ function App() {
         "relative px-8 pt-8",
 
         {
-          "sm:ml-96 print:ml-0": isSplitView,
+          "sm:ml-96 print:ml-0": isLeftOpen(isSplitView),
+          "sm:mr-96 print:mr-0": isRightOpen(isSplitView),
         },
       )}
     >
-      <div
-        className={cx(
-          "sm:w-96 w-full print:hidden fixed left-0 top-0 z-12 h-dvh",
-          {
-            hidden: !isSplitView,
-            block: isSplitView,
-          },
-        )}
-      >
-        <Sidebar />
-      </div>
+      <LeftSidebarContainer />
       <div
         className={cx("m-auto max-w-5xl", {
           // "sm:block hidden": isSplitView,
@@ -93,6 +122,7 @@ function App() {
         )}
         <BottomNav />
       </div>
+      <RightSidebarContainer />
     </div>
   );
 }
@@ -109,6 +139,7 @@ function StorySelect() {
     else setIsEditing(false);
     setText(val as string);
   };
+
   return (
     <div className="w-full sm:w-fit">
       <FormControl sx={{ minWidth: 120, width: "100%" }}>
@@ -164,7 +195,7 @@ function Body() {
             <StorySelect />
           </div>
         </div>
-         <hr className="opacity-10 print:hidden mb-8" />
+        <hr className="opacity-10 print:hidden mb-8" />
         <div className="mb-4 flex gap-4 justify-between flex-wrap">
           <Title>Pa’i hakahaka</Title>
           {/* <Vis when={isEditing}>
