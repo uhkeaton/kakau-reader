@@ -43,7 +43,7 @@ Ua pau ta ʻuwala a ketahi keitamāhine, ua moʻa a ua pau i ta ʻai. ʻO kā t�
 Me ta minoʻaka i pane ʻia mai ai ʻoia, “ʻAʻohe uʻi palaualelo o Kaʻū.” A me tēia mau hua ʻōlelo ua tū akula ʻoia a hele me ta ipo a tona hoa. Ua ʻite tēlā kanaka inā ʻo ta uʻi palaualelo tāna wahine e pāpaʻa ana ta ʻuwala i tapuahi.`,
       },
       {
-        title: "Ka Hiku o Nā Ahupuaʻa",
+        title: "Ka Hiku o nā Ahupuaʻa",
         text: `He moʻolelo kēia e hōʻike ana i ke kumu i mālama loa ʻia ai ka ipu ʻawaʻawa e kekahi poʻe o Kaʻū, Hawaiʻi. 
 
 Ua ʻōlelo ʻia, he aliʻi wahine ko Kaʻū i aloha nui ʻia e kona poʻe kānaka. I ka hāpai ʻana o ua aliʻi nei, ua hiki mai ka maʻi ma luna ona, a i ke kokoke ʻana aku i ka wā e hānau ai, ua make ihola ke aliʻi wahine. Ua laweʻia kona kino iloko o ke ana. Ua ʻolokaʻa ʻia ka pōhaku nui a paʻa ka waha o ka lua.
@@ -53,6 +53,16 @@ I ka hiki ʻana mai o ka lā e hānau ai ʻo ke keiki, ua ʻōʻili mai ka muʻo
 Ua hoʻi ka ʻuhane o kēia ipu ʻawaʻawa iluna o kekahi haka a hōʻike aku nei i kona ʻiniki ʻia, a ua nui ka ʻeha. Kiʻi ʻia ke kahuna o kēlā wahi a ua hōʻike ʻia iāia e ka ipu ʻawaʻawa i nā mea i hanaʻia maluna o kona kino, me ke kauoha pū aku iāia e ʻimi a loaʻa ʻoia a hoʻihoʻi mai. Ua iho ke kahuna a ka lua pao, a malaila ʻoia i hoʻokolo ai ma ke kā o ka ipu ʻawaʻawa, a hiki i ka hiku o nā ahupuaʻa. I ka ʻike ʻana o ke aliʻi iāia ma kahi o ka ipu ʻawaʻawa nīnau maila ʻoia no ke aha ʻoia nei i hiki aku ai. Hōʻike aku nei ua kahuna nei i ka hōʻike a kona haku iāia. Ua piha ke aliʻi i ka minamina i kona nānā ʻana iho i ka maikaʻi o ka ipu ʻawaʻawa, a hōʻole aku nei i ka manaʻo o ke kahuna. Ua lilo ihola kēia i kumu e hoʻopaʻapaʻa ai no lāua a hiki i ka ʻōlelo ʻana aku o ke kahuna e hele lāua a ʻike pono ʻowai ka i kuleana ʻiʻo i ua ipu ʻawaʻawa lā, ʻo ke kumu mai, no ka hilinaʻi ʻole o ke aliʻi he kanaka nō kēia ipu ʻawaʻawa. I ka ʻae ʻana o ke aliʻi, ua hele lāua e ʻike i kahi i kupu aʻe ai ʻo ua ipu ʻawaʻawa lā. Ua hele lāua ma ka ʻaoʻao o ke kā a hiki i ka lua pao, a komo aku nei iloko. Ua ʻike like aku nei nō lāua i kahi i ulu mai ai ʻo ka ipu ʻawaʻawa, mai ka ʻōpū mai o ke aliʻi make.
 
 Ua hoʻihoʻi ʻia mai ka ipu ʻawaʻawa e ke kahuna a mālama ʻia me ka punahele loa a hiki i ka make ʻana o ua kahuna nei. Mahope mai o ia manawa, ʻaʻole i maopopo he aha lā ka mea i hana ʻia no kēlā ipu ʻawaʻawa. No ka ʻohana o kēlā wahine aliʻi i make ai, ua lilo loa ka ipu ʻawaʻawa i mea nui iā lākou. Ke nahā kā lākou ipu ʻawaʻawa, na kanu ʻia me ka maikaʻi, a i ʻole, ua puhi ʻia i ke ahi i ʻole e kāpulu ʻia. Ke nīnau ʻia aku ke kumu o lākou i kiloi wale ʻole ai i nā ʻāpaʻapana o kā lākou ipu ʻawaʻawa, hoʻokahi nō pane e loaʻa mai, “No ka hiku o nā ahupuaʻa.”
+
+`,
+      },
+      {
+        title: "Nā Makapō o Moaʻula",
+        text: `No Moaʻula, Kaʻū, kekahi mau kānaka makapō. Hoʻokahi kanaka ua makapō loa, a ʻo kekahi hoʻi, ua hiki nō ke ʻike iki, i nā mea wale nō i kokoke loa i kona alo. Ua kūkā iho nei lāua e iho i Punaluʻu i kekahi lā, a na ke kanaka ʻike iki e alakaʻi i kona hoa makapō loa. Ua iho mālie aku nei lāua a hiki ma ke kapa o Punaluʻu kahawai. Nīnau aku nei ka mea makapō loa i kona hoa, “Pehea, he wai anei ko lalo?”  Pane maila kona hoa,  “ʻAe, he wai.” — “Nui anei ka wai?” — “ʻAe, nui ka wai o lalo.” — “A laila e lēkei aku kāua a ʻau aku no kēlā ʻaoʻao ma ʻō.” — “ʻAe, e lēkei aʻe kāua.” Ua lēkei akula lāua i lalo, a hakihaki nā wāwae. He wai nō ko lalo, ʻaʻole naʻe he nui.
+
+Aʻole nō kēia ka mea i pau ai ʻo ko lāua hele ʻana. I kekahi lā hele hou nō ua mau makapō nei i Punaluʻu, kahawai mauka naʻe lāua i hele ai i kēia hanana. I ka hiki ʻana ma kahawai ua nīnau aku ka makapō mua i kona alakaʻi, “Pehea kāu ʻike ʻana? Ua ʻuʻuku anei ka wai?” — “ʻAe ʻuʻuku loa.” — “He mea ʻoiaʻiʻo anei kēnā, ʻaʻohe wai o lalo?” — “He ʻoiaʻiʻo, ʻaʻohe wai.” — “E hele hoʻi hā kāua ilalo a hele wāwae aku ma ʻō.” —  A ua iho aku nei lāua i lalo.
+
+O ka mea a lāua i ʻike ai ua piha ke kahawai i ka wai a lilo lāua. Ua ʻike ʻia lāua e kūpaka ana iloko o ka wai a kiʻi ʻia mai a hoʻihoʻi ʻia iuka. Pau loa nō ko lāua makemake ʻana e hele hou ma Punaluʻu me ka hele pū ʻole me ka poʻe maka ʻike.
 
 `,
       },
