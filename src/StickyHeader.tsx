@@ -9,13 +9,13 @@ export function StickyNav() {
   return (
     <div className="print:hidden sticky top-0 z-10 bg-white">
       <div className="flex gap-2 justify-between print:hidden pt-4 pb-2">
-        <div>
-          <DrawerIcons show={["dictionary"]} />
-        </div>
+        <DrawerIcons show={["dictionary", "filter"]} />
         <div></div>
         <div className="flex-0 flex gap-8">
           <TypographyPopover />
-          <DrawerIcons show={["filter"]} />
+          <div>
+            {/* <DrawerIcons show={["dictionary"]} /> */}
+          </div>
           <Block when={isFullscreen}>
             <div
               onClick={() => setIsFullscreen(false)}

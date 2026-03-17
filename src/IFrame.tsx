@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 export function IFrame({ query }: { query: string }) {
 //   const src = `http://localhost:3000/`;
-  const src = `https://huiolelo.georgekwilliamson.workers.dev/`;
+  const src = `https://ahuiolelo.com/`;
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
 

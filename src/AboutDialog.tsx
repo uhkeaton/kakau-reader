@@ -34,14 +34,13 @@ export function AboutDialog() {
         aria-describedby="alert-dialog-description"
         scroll={"body"}
       >
-        <DialogTitle id="alert-dialog-title">{"No Keia Mikini"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"No Keia Wahi"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <div className="mb-4">Aloha! Mahalo keia komo ana mai.</div>
             <div className="mb-4">
-              Ua kukulu ia keia mikini i mea e kakoo ai i na hamana ke heluhelu me
-              ka okina kahako ole. Me keia mikini nei hiki ke hoohuna i ka okina
-              a me ke kahako. Hiki no ke heluhelu me kela kekahi.
+              Ua kukulu ia keia wahi i mea e kakoo ai i na hamana ke heluhelu me
+              ka okina kahako ole. Ma keia wahi nei hiki ke huna i ka poe okina
+              a me ke kahako a heluhelu me kela kekahi.
             </div>
             <div className="mb-4">
               E hoohana ia ana ka huaolelo o <APA>kakau pii</APA> ma kahi o ka
@@ -84,9 +83,8 @@ export function AboutDialog() {
                 </div>
               </Quote>
             </div>
-            <div className="py-4">Mahalo!</div>
-            <div className="py-4">na’u,</div>
-            <div className="py-4">Keaton</div>
+            <div className="py-4">Aloha</div>
+
           </DialogContentText>
         </DialogContent>
         <div className="m-4">

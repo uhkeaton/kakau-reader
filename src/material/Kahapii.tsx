@@ -3,6 +3,28 @@ import { useGlobal } from "../useGlobal";
 export function Kakaupii() {
   const { modeTK } = useGlobal();
   // return <Svg className="sm:w-36 w-32"/>;
+  return (
+    <div className="flex items-center">
+      <div className="relative -ml-2">
+        <div className="absolute bottom-1 left-3 w-9 h-9 bg-[#c2ea356d] rounded-full"></div>
+        <img
+          className="rounded-full w-14 drop-shadow"
+          src="kamehameha-butterfly-transparent-saturated.png"
+        />
+      </div>
+      <div className="inline-flex mochiy-pop-one-regular text-center">
+        <div className="flex flex-col">
+          <span className="text-[#56d926] leading-1">
+            {/* かな */}
+            ▴▾▴▾▴▾▴
+          </span>
+          <span className="text-2xl opacity-100 text-[#5a5a5b]">
+            {modeTK === "t" ? "katau" : "kakau"}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
   return <SvgKakaupiiPencil className="sm:w-36 w-30" />;
   return (
     <div className="inline-flex mochiy-pop-one-regular text-center">
