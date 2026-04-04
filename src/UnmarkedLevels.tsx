@@ -1,12 +1,40 @@
-import { useGlobal, type VisibilitySettings } from "./useGlobal";
 import cx from "classnames";
-// import { IconClockLoader40 } from "./material/IconClockLoader40";
+import { Orthography } from "./url";
 import { IconDoNotDisturb } from "./material/IconDoNotDisturb";
+import { useGlobal, type VisibilitySettings } from "./useGlobal";
 
-type Item = {
+type UnmarkedLevelItem = {
   id: string;
   config: Partial<VisibilitySettings>;
 };
+
+const data: UnmarkedLevelItem[] = [
+  {
+    id: "1",
+    config: {
+      closedClassSomeCollisions: false,
+      closedClassNoCollisions: false,
+      openClassLevelOne: false,
+    },
+  },
+
+  {
+    id: "2",
+    config: {
+      closedClassSomeCollisions: true,
+      closedClassNoCollisions: false,
+      openClassLevelOne: false,
+    },
+  },
+  {
+    id: "3",
+    config: {
+      closedClassSomeCollisions: true,
+      closedClassNoCollisions: true,
+      openClassLevelOne: true,
+    },
+  },
+];
 
 function Number({ text }: { text: string }) {
   return (
@@ -17,49 +45,6 @@ function Number({ text }: { text: string }) {
     </div>
   );
 }
-
-const data: Item[] = [
-  {
-    id: "1",
-    config: {
-      closedClassMoreCollisions: false,
-      closedClassSomeCollisions: false,
-      closedClassNoCollisions: false,
-      openClassLevelOne: false,
-    },
-    // component: <IconClockLoader40 className="8" />,
-  },
-  // {
-  //   id: "2",
-  //   config: {
-  //     closedClassMoreCollisions: true,
-  //     closedClassSomeCollisions: false,
-  //     closedClassNoCollisions: false,
-  //     openClassLevelOne: false,
-  //   },
-  //   component: <IconClockLoader40 className="w-9" />,
-  // },
-  {
-    id: "2",
-    config: {
-      closedClassMoreCollisions: true,
-      closedClassSomeCollisions: true,
-      closedClassNoCollisions: false,
-      openClassLevelOne: false,
-    },
-    // component: <IconClockLoader60 className="w-9" />,
-  },
-  {
-    id: "3",
-    config: {
-      closedClassMoreCollisions: true,
-      closedClassSomeCollisions: true,
-      closedClassNoCollisions: true,
-      openClassLevelOne: true,
-    },
-    // component: <IconClockLoader90 className="w-9" />,
-  },
-];
 
 function isSelected(
   config: Partial<VisibilitySettings>,
@@ -72,16 +57,19 @@ function isSelected(
 
 export function Levels() {
   const {
+    orthography,
+    setOrthography,
     visibilitySettings,
     setVisibilitySettings,
     showFurigana,
     setShowFurigana,
   } = useGlobal();
 
+  const isMarked = orthography === Orthography.marked;
+
   const is1 = isSelected(data[0].config, visibilitySettings);
   const is2 = isSelected(data[1].config, visibilitySettings);
   const is3 = isSelected(data[2].config, visibilitySettings);
-  // const is3 = isSelected(data[3].config, visibilitySettings);
 
   const someIsSelected = is1 || is2 || is3;
   return (
@@ -91,13 +79,12 @@ export function Levels() {
           className={cx(
             "cursor-pointer rounded-full p-1 opacity-75 hover:opacity-100",
             {
-              "text-[#56d926]": someIsSelected && showFurigana,
-              "text-neutral-400": !someIsSelected || !showFurigana,
+              "text-[#56d926]": someIsSelected && showFurigana && !isMarked,
+              "text-neutral-400": !someIsSelected || !showFurigana || isMarked,
             },
           )}
-          //   variant="outlined"
-          //   color="success"
           onClick={() => {
+            setOrthography(Orthography.unmarked);
             setShowFurigana(true);
             if (is1) {
               setVisibilitySettings((s) => ({ ...s, ...data[1].config }));
@@ -105,17 +92,7 @@ export function Levels() {
               setVisibilitySettings((s) => ({ ...s, ...data[2].config }));
             } else if (is3) {
               setVisibilitySettings((s) => ({ ...s, ...data[0].config }));
-            }
-
-            // else if (is3) {
-            //   if (showFurigana) {
-            //     setShowFurigana(false);
-            //     // setVisibilitySettings((s) => ({ ...s, ...data[0].config }));
-            //   } else {
-            //     setVisibilitySettings((s) => ({ ...s, ...data[0].config }));
-            //   }
-            // }
-            else setVisibilitySettings((s) => ({ ...s, ...data[0].config }));
+            } else setVisibilitySettings((s) => ({ ...s, ...data[0].config }));
           }}
         >
           {(function () {
@@ -129,25 +106,6 @@ export function Levels() {
           })()}
         </div>
       </>
-      {/* <div
-        onClick={onClickLeft}
-        className={cx(
-          "text-center inline-flex justify-center items-center h-full",
-          leftClass,
-        )}
-      >
-        {left}
-      </div>
-      <div className="h-2/3 border-r border-neutral-400" />
-      <div
-        onClick={onClickRight}
-        className={cx(
-          "text-center inline-flex justify-center items-center h-full",
-          rightClass,
-        )}
-      >
-        {right}
-      </div> */}
     </div>
   );
 }

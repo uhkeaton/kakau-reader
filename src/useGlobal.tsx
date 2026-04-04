@@ -1,41 +1,71 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { isAStory } from "./stories";
-import { useLocalStorage } from "./useLocalStorage";
 import type { SplitView } from "./sidebar.helpers";
+import { useSearchParams } from "react-router";
+import type { Orthography, SplitScreenSide, ThemeMode } from "./url";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCollections } from "./api";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
 
 const keyText = "text";
-const keyModeTK = "mode-tk";
-const keyVisibiltySettings = "visibility-settings";
-
 
 export type VisibilitySettings = {
   "setting-show-mai-group": boolean;
   closedClassNoCollisions: boolean;
   closedClassSomeCollisions: boolean;
-  closedClassMoreCollisions: boolean;
   openClassLevelOne: boolean;
 };
 
 function useGlobalContext() {
+  const collectionsQuery = useQuery({
+    queryKey: ["collections"],
+    queryFn: fetchCollections,
+  });
+
   const [query, setQuery] = useState("");
-  // const [modeTK, setModeTK] = useState<"t" | "k">("k");
-  const [modeTK, setModeTK] = useLocalStorage<"t" | "k">(keyModeTK, "k");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const orthography: Orthography =
+    (searchParams.get("orthography") as Orthography) || "marked";
+
+  function setOrthography(value: Orthography) {
+    setSearchParams((searchParams) => {
+      searchParams.set("orthography", value);
+      return searchParams;
+    });
+  }
+
+  const theme: ThemeMode = (searchParams.get("theme") as ThemeMode) || "light";
+
+  function setTheme(value: ThemeMode) {
+    setSearchParams((searchParams) => {
+      searchParams.set("theme", value);
+      return searchParams;
+    });
+  }
+
+  const splitScreenSide: SplitScreenSide =
+    (searchParams.get("splitScreenSide") as SplitScreenSide) || "left";
+
+  function setSplitScreenSide(value: SplitScreenSide) {
+    setSearchParams((searchParams) => {
+      searchParams.set("splitScreenSide", value);
+      return searchParams;
+    });
+  }
 
   const [visibilitySettings, setVisibilitySettings] =
-    useLocalStorage<VisibilitySettings>(keyVisibiltySettings, {
+    useState<VisibilitySettings>({
       "setting-show-mai-group": true,
       closedClassNoCollisions: true,
       closedClassSomeCollisions: true,
-      closedClassMoreCollisions: true,
       openClassLevelOne: true,
     });
 
   //
   const [text, setText] = useState(() => {
     const stored = localStorage.getItem(keyText);
-    if (isAStory(stored || "")) return "";
     return stored || "";
   });
 
@@ -43,35 +73,44 @@ function useGlobalContext() {
     localStorage.setItem(keyText, text);
   }, [text]);
 
-  const [spaceDown, setSpaceDown] = useState(false);
   const [showFurigana, setShowFurigana] = useState(true);
 
   const [isEditing, setIsEditing] = useState(!text);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isSplitView, setIsSplitView] = useState<SplitView>(false);
-  const [fontSize, setFontSize] = useState(3);
+  const [splitView, setSplitView] = useState<SplitView>(false);
+  const [fontSize, setFontSize] = useState(5);
 
   return {
-    spaceDown,
-    setSpaceDown,
     showFurigana,
     setShowFurigana,
     isEditing,
     setIsEditing,
-    isFullscreen,
-    setIsFullscreen,
     text,
     setText,
-    isSplitView,
-    setIsSplitView,
+    splitView,
+    setSplitView,
     fontSize,
     setFontSize,
-    modeTK,
-    setModeTK,
+
+    //
+    orthography,
+    setOrthography,
+
+    //
+    theme,
+    setTheme,
+
+    //
     visibilitySettings,
     setVisibilitySettings,
     query,
     setQuery,
+
+    //
+    splitScreenSide,
+    setSplitScreenSide,
+
+    //
+    collectionsQuery,
   };
 }
 

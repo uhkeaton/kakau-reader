@@ -1,32 +1,49 @@
-import { TypographyPopover } from "./buttons/TypographyMenu";
+import { FontSizeMenu } from "./FontSizeMenu";
+import { dictionaryLoaderId } from "./dictionaryLoading";
 import { DrawerIcons } from "./DrawerNav";
-import { IconClose } from "./material/IconClose";
+import { OrthographyToggle } from "./OrthographyToggle";
+import { ThemeMode } from "./url";
 import { useGlobal } from "./useGlobal";
-import { Block } from "./Vis";
+import cx from "classnames";
+import { BackButton } from "./BackButton";
 
 export function StickyNav() {
-  const { isFullscreen, setIsFullscreen } = useGlobal();
+  const { theme } = useGlobal();
   return (
-    <div className="print:hidden sticky top-0 z-10 bg-white">
-      <div className="flex gap-2 justify-between print:hidden pt-4 pb-2">
-        <DrawerIcons show={["dictionary", "filter"]} />
+    <div className="print:hidden sticky top-0 z-10">
+      <div className="bg-(--bg-base) flex gap-2 justify-between print:hidden pt-4 pb-2 border-b border-(--line)">
+        <div className="flex gap-4">
+          <BackButton /*  */ />
+          <DrawerIcons show={["dictionary"]} />
+        </div>
         <div></div>
-        <div className="flex-0 flex gap-8">
-          <TypographyPopover />
-          <div>
-            {/* <DrawerIcons show={["dictionary"]} /> */}
+        <div className="flex-0 flex gap-8 pr-4">
+          <FontSizeMenu />
+          <div className="pb-1.5">
+            <OrthographyToggle />
           </div>
-          <Block when={isFullscreen}>
-            <div
-              onClick={() => setIsFullscreen(false)}
-              className="opacity-50 hover:opacity-100 cursor-pointer flex-0"
-            >
-              <IconClose className="w-8" />
-            </div>
-          </Block>
         </div>
       </div>
-      <hr className="opacity-10 mb-8" />
+      <div className="mb-8">
+        <div
+          id={dictionaryLoaderId}
+          className="opacity-0"
+          style={{ height: 3, width: "100%" }}
+        >
+          <img
+            className={cx("h-full w-full", {
+              hidden: theme === ThemeMode.light,
+            })}
+            src={"/loader-dark-thin.gif"}
+          />
+          <img
+            className={cx("h-full w-full", {
+              hidden: theme === ThemeMode.dark,
+            })}
+            src={"/loader-light-thin.gif"}
+          />
+        </div>
+      </div>
     </div>
   );
 }

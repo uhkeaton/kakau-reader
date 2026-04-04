@@ -1,19 +1,21 @@
-import { DrawerNavDictionary } from "./DrawerNav";
-import { IFrame } from "./IFrame";
+import { DrawerBottomNavDictionary, DrawerNavDictionary } from "./DrawerNav";
+import { DictionaryIFrame } from "./DictionaryIFrame";
 import { useGlobal } from "./useGlobal";
 
 export function Dictionary() {
-  const { query } = useGlobal();
+  const { query, theme } = useGlobal();
 
   return (
-    <div className="absolute w-full h-full inset-0 bg-white/98 overscroll-contain overflow-y-auto">
+    <div className="absolute w-full h-full inset-0 bg-(--bg-base)">
       <div className="w-full h-full flex flex-col">
-        <div>
+        <div className="sm:block hidden">
           <DrawerNavDictionary />
-          {/* <hr className="opacity-15" /> */}
         </div>
-        <div className="flex-1 overscroll-none">
-          <IFrame query={query} />
+        <div className="flex-1">
+          <DictionaryIFrame query={query} theme={theme} />
+        </div>
+        <div className="sm:hidden block">
+          <DrawerBottomNavDictionary />
         </div>
       </div>
     </div>

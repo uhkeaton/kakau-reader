@@ -18,7 +18,6 @@ export const [niceToShow, niceToShowLower] = generate([
   // words
   "Aʻo",
   "Iʻa",
-  // "Aʻu",
   "Iaʻu",
   "Maʻi",
   "Muʻo",
@@ -32,7 +31,6 @@ export const [pronouns, pronounsLower] = generate([
   //
   "Kaʻu",
   "Koʻu",
-  // "Kuʻu",
   "Naʻu",
   "Noʻu",
   "Oʻu",
@@ -70,79 +68,47 @@ export const [closedClassNoCollisions, closedClassNoCollisionsLower] = generate(
 
 export const [closedClassSomeCollisions, closedClassSomeCollisionsLower] =
   generate([
-    "ʻAi",
-    "Aʻe",
-    "ʻAe",
+    // More Collisions
+    ...[
+      "Ā",
+      "Āna",
+      "ʻAna",
+      "Āu",
+      "ʻAneʻi",
+      "ʻIa",
+      "Iā",
+      "Kā",
+      "Kāu",
+      "Mā",
+      "Nā",
+      "Neʻi",
+      "Nō",
+      "ʻO",
+    ],
 
-    // some collisions
-    // some collisions
-    "Akā",
-    // "ʻAka",
-    // "Aka",
-    "ʻAno",
-    // "ʻĀnō",
-    // "Ano",
-    "ʻOi",
-    "ʻOe",
-    "ʻOle",
-    "Kēlā",
-    "Kēnā",
-    "Inā",
-    "Kāna",
-    "Kāua",
-    "Nāna",
-    "Nānā",
-    "Nāu",
-    "Naʻe",
-    "Pēlā",
-    // "Pela",
-    "Poʻe",
-    // "Poe",
-
-    "Hoʻi",
-    // "Hoi",
-  ]);
-export const [closedClassMoreCollisions, closedClassMoreCollisionsLower] =
-  generate([
-    ////
-    ////
-    ////
-    ////
-    // TODO
-    "Ā",
-    // "ʻĀ",
-    // "A",
-    "Āna",
-    "ʻAna",
-    // "Ana",
-    "Āu",
-    // "ʻAu",
-    // "Au",
-
-    // "ʻAe",
-
-    "ʻAneʻi",
-    // "Anei",
-
-    "ʻIa",
-    "Iā",
-    // "Ia",
-    "Kā",
-    // "Ka",
-    "Kāu",
-    // "Kau",
-    "Mā",
-    // "Ma",
-    "Nā",
-    // "Na",
-    "Neʻi",
-    // "Nei",
-    "Nō",
-    // "No",
-    "ʻO",
-    // "ʻŌ",
-    // "O",
-    // "Ō",
+    // Less Collisions
+    ...[
+      "ʻAi",
+      "Aʻe",
+      "ʻAe",
+      "Akā",
+      "ʻAno",
+      "ʻOi",
+      "ʻOe",
+      "ʻOle",
+      "Kēlā",
+      "Kēnā",
+      "Inā",
+      "Kāna",
+      "Kāua",
+      "Nāna",
+      "Nānā",
+      "Nāu",
+      "Naʻe",
+      "Pēlā",
+      "Poʻe",
+      "Hoʻi",
+    ],
   ]);
 
 export function shouldKnow(word: string, s: VisibilitySettings) {
@@ -152,9 +118,6 @@ export function shouldKnow(word: string, s: VisibilitySettings) {
   }
   if (!s["closedClassSomeCollisions"]) {
     list.push(...closedClassSomeCollisions);
-  }
-  if (!s["closedClassMoreCollisions"]) {
-    list.push(...closedClassMoreCollisions);
   }
   if (!s["openClassLevelOne"]) {
     list.push(
@@ -217,9 +180,6 @@ export const [openClassOkinaLevelOne, openClassOkinaLevelOneLower] = generate([
   "ʻUpena",
   "ʻUwala",
   "Kūʻai",
-
-  // "Pōʻai",
-  // names
 ]);
 
 export const [openClassVowelLevelOne, openClassVowelLevelOneLower] = generate([
@@ -273,9 +233,6 @@ export const [ambiguousLevelOne] = generate([
   "Ai",
   "ʻAina",
   "ʻĀina",
-  // "ʻAinā",
-  // "ʻAʻina",
-  // "Aina",
   "Ao",
   "Aʻo",
   "ʻAoʻao",
@@ -344,12 +301,3 @@ export const [numbers, numbersLower] = generate([
   "ʻUmi",
   "ʻUmikūmāiwa",
 ]);
-
-// plural
-// kupuna
-// makua
-
-// searched words-by-most-common.json until freq 510
-
-// hoaaloha
-// meaʻai

@@ -1,7 +1,7 @@
-import TextareaAutosize from "@mui/material/TextareaAutosize";
-import type { ChangeEventHandler } from "react";
-import { useGlobal } from "./useGlobal";
 import { label } from "./labels";
+import { useGlobal } from "./useGlobal";
+import type { ChangeEventHandler } from "react";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 export default function TextArea({
   value,
@@ -10,7 +10,7 @@ export default function TextArea({
   value: string;
   onChange: ChangeEventHandler<HTMLTextAreaElement, HTMLTextAreaElement>;
 }) {
-  const { modeTK } = useGlobal();
+  const { orthography } = useGlobal();
   return (
     <TextareaAutosize
       minRows={3}
@@ -18,8 +18,8 @@ export default function TextArea({
       value={value}
       onChange={onChange}
       aria-label="empty textarea"
-      placeholder={label(modeTK, "E hookomo i ka olelo i loko nei")}
-      className="w-full h-full bg-neutral-100 rounded-lg p-4"
+      placeholder={label(orthography, "E hookomo i ka olelo i loko nei")}
+      className="w-full h-full bg-(--bg-secondary) rounded-lg p-4"
       style={{ margin: 0 }}
     />
   );

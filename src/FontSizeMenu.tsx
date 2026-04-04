@@ -1,9 +1,9 @@
 import * as React from "react";
 import Popover from "@mui/material/Popover";
 import cx from "classnames";
-import { useGlobal } from "../useGlobal";
+import { useGlobal } from "./useGlobal";
 
-export function TypographyPopover() {
+export function FontSizeMenu() {
   const { fontSize } = useGlobal();
   const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null);
 
@@ -40,7 +40,7 @@ export function TypographyPopover() {
           horizontal: "right",
         }}
       >
-        <div className="min-w-64 p-4 bg-neutral-100">
+        <div className="min-w-64 p-4 bg-(--bg-secondary)">
           <FontSizeButtons />
           <div className="flex py-4">
             {new Array(FONT_MAX).fill(0).map((_, i) => {
@@ -48,8 +48,7 @@ export function TypographyPopover() {
                 <div className="flex-1 flex items-center justify-center">
                   <div
                     className={cx("w-2 h-2 rounded text-xl", {
-                      "text-gray-300": i >= fontSize,
-                      "text-black": i < fontSize,
+                      "opacity-25": i >= fontSize,
                     })}
                   >
                     {i % 2 == 0 ? "▲" : "▼"}
@@ -71,26 +70,7 @@ function clamp(num: number) {
   return Math.max(Math.min(num, FONT_MAX), FONT_MIN);
 }
 
-export function ModeTKButtons() {
-  const { modeTK, setModeTK } = useGlobal();
 
-  return (
-    <BinaryButtons
-      left={
-        <span className="w-16 lexend-400 text-xl">
-          K
-        </span>
-      }
-      right={
-        <span className="w-16 lexend-400 text-xl">T</span>
-      }
-      onClickLeft={() => setModeTK("k")}
-      onClickRight={() => setModeTK("t")}
-      leftClass={modeTK === "k" ? "text-white bg-[#56d926]" : "text-neutral-500"}
-      rightClass={modeTK === "t" ? "text-white bg-[#56d926]" : "text-neutral-500"}
-    />
-  );
-}
 
 function FontSizeButtons() {
   const { setFontSize } = useGlobal();
@@ -104,23 +84,6 @@ function FontSizeButtons() {
       leftClass="hover:bg-white/10"
       rightClass="hover:bg-white/10"
     />
-  );
-  return (
-    <div className="h-8 bg-gray-200  rounded-2xl inline-flex items-center overflow-hidden cursor-pointer select-none">
-      <div
-        onClick={() => setFontSize((s) => clamp(s - 1))}
-        className="w-30 text-center inline-flex justify-center items-center hover:bg-white/10 h-full"
-      >
-        <span className="lexend-500 text-md">A</span>
-      </div>
-      <div className="h-2/3 border-r border-neutral-400" />
-      <div
-        onClick={() => setFontSize((s) => clamp(s + 1))}
-        className="w-30 text-center inline-flex justify-center items-center hover:bg-white/10 h-full"
-      >
-        <span className="lexend-400 text-2xl">A</span>
-      </div>
-    </div>
   );
 }
 
@@ -140,7 +103,7 @@ function BinaryButtons({
   rightClass?: string;
 }) {
   return (
-    <div className="h-8 bg-gray-200  rounded-2xl inline-flex items-center overflow-hidden cursor-pointer select-none">
+    <div className="h-8 bg-gray-300/40  rounded-2xl inline-flex items-center overflow-hidden cursor-pointer select-none">
       <div
         onClick={onClickLeft}
         className={cx(

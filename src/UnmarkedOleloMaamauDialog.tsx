@@ -5,17 +5,17 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Section } from "./SettingsDrawer";
+import { Section } from "./UnmarkedSettingsDrawer";
 import {
   closedClassNoCollisionsLower,
   namesUpper,
   numbersLower,
   openClassOkinaLevelOneLower,
   openClassVowelLevelOneLower,
-} from "./constants";
+} from "./unmarked.helpers";
 import { Title } from "./Title";
 
-export function OleloMaamauDialog() {
+export function UnmarkedOleloMaamauDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -90,7 +90,6 @@ export function OleloMaamauDialog() {
         </DialogContent>
         <div className="m-4">
           <DialogActions>
-            {/* <Button onClick={handleClose}>Whatever</Button> */}
             <Button variant="contained" onClick={handleClose}>
               Ua Pau
             </Button>

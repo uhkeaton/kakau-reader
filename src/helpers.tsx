@@ -48,17 +48,6 @@ export function coerceOkinas(text: string): string {
   );
 }
 
-// export function removePunctuation(token: string): {
-//   word: string;
-//   punctuation: string;
-// } {
-//   const match = token.match(/^(.+?)([.,;:!?]+)?$/);
-
-//   return {
-//     word: match?.[1] ?? token,
-//     punctuation: match?.[2] ?? "",
-//   };
-// }
 
 export type ParsedWord = {
   original: string;

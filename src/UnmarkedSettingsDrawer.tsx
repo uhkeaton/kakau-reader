@@ -1,56 +1,49 @@
 import { Checkbox } from "@mui/material";
-import { ModeTKButtons } from "./buttons/TypographyMenu";
 import {
   closedClassNoCollisionsLower,
   niceToShowLower,
   pronounsLower,
   closedClassSomeCollisionsLower,
-  closedClassMoreCollisionsLower,
-} from "./constants";
+} from "./unmarked.helpers";
 import cx from "classnames";
 import { Title } from "./Title";
 import { predicateSortWithoutOkina } from "./helpers";
 import { useGlobal, type VisibilitySettings } from "./useGlobal";
-import { OleloMaamauDialog } from "./OleloMaamauDialog";
+import { UnmarkedOleloMaamauDialog } from "./UnmarkedOleloMaamauDialog";
 import { label } from "./labels";
 import { DrawerNavFilter } from "./DrawerNav";
 
-export function SettingsDrawer() {
-  const { modeTK } = useGlobal();
+export function UnmarkedSettingsDrawer() {
+  const { orthography } = useGlobal();
   return (
     <>
-      <div className="absolute w-full h-full inset-0 bg-white/98 overscroll-contain overflow-y-auto">
+      <div className="absolute w-full h-full inset-0 bg-(--bg-base) overscroll-contain overflow-y-auto">
         <div className="sticky top-0 w-full z-30 mr-px">
           <DrawerNavFilter />
-          <hr className="opacity-15" />
         </div>
-        <div className="p-4 py-8">
-          <div className="mb-4">
-            <Title>{label(modeTK, "Ka Pela Ana")}</Title>
-          </div>
-          <ModeTKButtons />
-        </div>
-        <hr className="opacity-20 mb-4" />
+
         <div className="p-4">
-          <Title>{label(modeTK, "Ke Kakau Pii")}</Title>
+          <Title>{label(orthography, "Ke Kakau Pii")}</Title>
         </div>
         <div className="p-4">
           <Section
-            title={"Akaaka Ole"}
-            ids={["closedClassMoreCollisions"]}
-            items={closedClassMoreCollisionsLower}
+            title={"1. Na Mea i Koe"}
+            ids={[]}
+            items={[]}
+            disableSelect
+            manualSelected
           />
           <Section
-            title={"Akaaka Iki"}
+            title={"2. Akaaka Iki"}
             ids={["closedClassSomeCollisions"]}
             items={closedClassSomeCollisionsLower}
           />
           <Section
-            title={"Moakaaka"}
+            title={"3. Moakaaka"}
             ids={["openClassLevelOne", "closedClassNoCollisions"]}
             items={closedClassNoCollisionsLower}
           >
-            <OleloMaamauDialog />
+            <UnmarkedOleloMaamauDialog />
           </Section>
         </div>
         <hr className="opacity-20 mx-16" />
@@ -61,9 +54,6 @@ export function SettingsDrawer() {
               <Title>{"Pono"}</Title>
             </div>
             <div className="mb-8 relative">
-              {/* <div className="absolute top-0 right-0">
-              <Checkbox defaultChecked disabled />
-            </div> */}
               {pronounsLower.sort(predicateSortWithoutOkina).map((item) => {
                 return <Item text={item} />;
               })}
@@ -97,32 +87,6 @@ export function SettingsDrawer() {
             items={niceToShowLower}
           />
         </div>
-        {/* <hr className="opacity-20 mx-16" /> */}
-        <div className="p-4">
-          {/* <div className="p-4">
-            <div className="mb-2">
-              <Title>{"Olelo Maamau"}</Title>
-            </div>
-            <div className="mb-8 relative">
-              <div className="absolute top-0 right-0">
-                <Checkbox defaultChecked disabled />
-              </div>
-
-              {["…aʻa…", "…eʻe…", "…iʻi…", "…oʻo…", "…uʻu…"].map((item) => {
-                return <Item text={item} disabled={true} />;
-              })}
-            </div>
-          </div> */}
-
-          {/* <Section
-            id="openClassOkinaLevelOne"
-            items={openClassOkinaLevelOneLower}
-          />
-          <Section
-            id="openClassVowelLevelOne"
-            items={openClassVowelLevelOneLower}
-          /> */}
-        </div>
       </div>
     </>
   );
@@ -136,15 +100,9 @@ function Item({ text, disabled }: { text: string; disabled?: boolean }) {
       })}
     >
       <div>{text}</div>
-      <div></div>
     </div>
   );
 }
-// function toggleVisibilitySetting(id: keyof VisibilitySettings) {
-//   return function (state: VisibilitySettings) {
-//     return { ...state, [id]: !state[id] };
-//   };
-// }
 
 export function Section({
   title,
@@ -152,12 +110,14 @@ export function Section({
   ids,
   children,
   disableSelect,
+  manualSelected,
 }: {
   title?: string;
   items?: string[];
   ids: (keyof VisibilitySettings)[];
   children?: React.ReactNode;
   disableSelect?: boolean;
+  manualSelected?: boolean;
 }) {
   const { visibilitySettings, setVisibilitySettings, setShowFurigana } =
     useGlobal();
@@ -173,11 +133,10 @@ export function Section({
         setVisibilitySettings((s) => ({
           ...s,
           ...Object.fromEntries(ids.map((id) => [id, !checked])),
-          // [id]: !s[id]
         }));
       }}
-      className={cx("mb-8 relative border border-neutral-200 rounded p-4", {
-        "bg-cyan-50": !disableSelect && checked,
+      className={cx("mb-8 relative border border-(--line) rounded p-4", {
+        "bg-cyan-300/15": (!disableSelect && checked) || manualSelected,
         "cursor-pointer": !disableSelect,
       })}
     >
@@ -191,24 +150,22 @@ export function Section({
               setVisibilitySettings((s) => ({
                 ...s,
                 ...Object.fromEntries(ids.map((id) => [id, e.target.checked])),
-                // [id]: e.target.checked
               }));
             }}
           />
         </div>
       )}
 
-      {/*  */}
       {title && (
         <div
-          className={cx("mb-2 text-black", {
+          className={cx("mb-2", {
             "opacity-50": !checked && !disableSelect,
           })}
         >
           <Title>{title}</Title>
         </div>
       )}
-      {items?.length && (
+      {items && items?.length > 0 && (
         <div
           className={cx({
             "grid grid-cols-[auto_1fr] gap-x-16": true,
