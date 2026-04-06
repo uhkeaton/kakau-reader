@@ -53,7 +53,7 @@ export function HomePage() {
                 )}
               </div>
               <div className="mb-8">
-                <CollectionPreviews type="tiles" />
+                <CollectionPreviews />
               </div>
             </div>
             <hr className="opacity-10 print:hidden mb-8" />

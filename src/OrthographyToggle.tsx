@@ -68,12 +68,7 @@ export function OrthographyToggle() {
         }
       }}
     >
-      <div
-        className={cx({
-          "": orthography == Orthography.marked,
-          "": orthography == Orthography.unmarked,
-        })}
-      >
+      <div>
         <IconAMarked
           className={cx("w-4", {
             "text-(--text-hl)": orthography == Orthography.marked,

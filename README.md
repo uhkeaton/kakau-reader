@@ -44,6 +44,8 @@ More reading:
 
 - [Ka Leo o na Kupa: Hawaiian Language Revitalization Efforts by Native (L1) Speakers](https://www.youtube.com/watch?v=YiUTkzHTg_E&t=2124s)
 
+- [Kanaka Scholar Series: Annette Kuuipolani Kanahele Wong](https://youtu.be/7dR-kzpQrW0?si=tqdwKivX5F3NpOmt&t=1302)
+
 ### Samoan
 
 - [Diacritical Marks and the Samoan Language - Eseta Magaui Tualaulelei, Fepuleai Lasei John Mayer, Galumalemana A Hunkin](https://research.usq.edu.au/download/0ac10ce457215abc7c52244ee118ebb22160bce36633bdc122982ee81176c533/327285/Tualaulelei_Mayer_Hunkin_2015_PUBLISHED.pdf)

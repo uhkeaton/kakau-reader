@@ -32,7 +32,7 @@ export function CollectionPreviewContainer({
   );
 }
 
-export function CollectionPreviews({ type }: { type: "list" | "tiles" }) {
+export function CollectionPreviews() {
   const { collectionsQuery } = useGlobal();
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,19 +44,26 @@ export function CollectionPreviews({ type }: { type: "list" | "tiles" }) {
     });
   };
 
-  if (type === "tiles") {
-    if (collectionsQuery?.isLoading) {
-      return (
-        <CollectionPreviewContainer>
-          <CollectionSkeleton />
-          <CollectionSkeleton />
-          <CollectionSkeleton />
-        </CollectionPreviewContainer>
-      );
-    }
+  if (collectionsQuery?.isLoading) {
     return (
       <CollectionPreviewContainer>
-        {collectionsQuery?.data?.collections?.map((c, i) => {
+        <CollectionSkeleton />
+        <CollectionSkeleton />
+        <CollectionSkeleton />
+      </CollectionPreviewContainer>
+    );
+  }
+
+  const hasPreviewImage = (collectionsQuery?.data?.collections ?? [])?.filter(
+    (c) => c.previewImageSrc,
+  );
+  const notHasPreviewImage = (
+    collectionsQuery?.data?.collections ?? []
+  )?.filter((c) => !c.previewImageSrc);
+  return (
+    <>
+      <CollectionPreviewContainer>
+        {hasPreviewImage.map((c, i) => {
           return (
             <CollectionPreview
               id={c.id}
@@ -71,33 +78,27 @@ export function CollectionPreviews({ type }: { type: "list" | "tiles" }) {
           );
         })}
       </CollectionPreviewContainer>
-    );
-  }
-  if (type === "list") {
-    return (
-      <>
-        {collectionsQuery?.data?.collections?.map((c) => {
-          return (
-            <div
-              className="cursor-pointer mb-5 rounded-lg bg-(--bg-secondary) overflow-hidden"
-              onClick={() => {
-                handleClick(c.id);
-              }}
-            >
-              <div className="pt-2 pb-3 px-3 w-full text-lg opacity-85 hover:opacity-100 hover:bg-neutral-300/10">
-                <div>
-                  <span className="font-semibold">{c.title}</span>
-                </div>
-                <div>
-                  <span className="text-base opacity-65">{c.subtitle}</span>
-                </div>
+      {notHasPreviewImage.map((c) => {
+        return (
+          <div
+            className="cursor-pointer mb-5 rounded-lg bg-(--bg-secondary) overflow-hidden"
+            onClick={() => {
+              handleClick(c.id);
+            }}
+          >
+            <div className="pt-2 pb-3 px-3 w-full text-lg opacity-85 hover:opacity-100 hover:bg-neutral-300/10">
+              <div>
+                <span className="font-semibold">{c.title}</span>
+              </div>
+              <div>
+                <span className="text-base opacity-65">{c.subtitle}</span>
               </div>
             </div>
-          );
-        })}
-      </>
-    );
-  }
+          </div>
+        );
+      })}
+    </>
+  );
 }
 
 function CollectionPreview({
