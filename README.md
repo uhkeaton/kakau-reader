@@ -37,9 +37,11 @@ of Hawaiian language.
 ```
 
 More reading:
+
 - [Developing a Standardized Hawaiian Orthography, Wilson, 1981](https://archive.org/details/pacificstudiess8100poly/page/164/mode/2up)
 
 ### Niihau
+
 - [Ka Leo o na Kupa: Hawaiian Language Revitalization Efforts by Native (L1) Speakers](https://www.youtube.com/watch?v=YiUTkzHTg_E&t=2124s)
 
 ### Samoan
@@ -49,4 +51,8 @@ More reading:
 ---
 
 ## Features are Opt-In
+
 Most UI elements are enabled by environment variables. Developers can choose which features to enable.
+
+## Dictionary Not Included
+This repo does not include a Hawaiian or Samoan dictionary, but includes functionality to interface with external dictionaries.
