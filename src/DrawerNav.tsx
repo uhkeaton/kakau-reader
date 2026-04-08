@@ -29,14 +29,14 @@ export function DrawerNavDictionary() {
           <SplitScreenToggle />
         </div>
 
-        <div
+        <button
           className="opacity-50 hover:opacity-100 cursor-pointer"
           onClick={() => {
             setSplitView(false);
           }}
         >
           <IconClose className="w-8" />
-        </div>
+        </button>
       </div>
     </div>
   );
@@ -69,14 +69,14 @@ export function UnmarkedSettingsDrawerHeader() {
           <SplitScreenToggle />
           {viteEnableUnmarkedOrthographyLevelsButton && <Levels />}
         </div>
-        <div
+        <button
           className="opacity-50 hover:opacity-100 cursor-pointer"
           onClick={() => {
             setSplitView(false);
           }}
         >
           <IconClose className="w-8" />
-        </div>
+        </button>
       </div>
     </div>
   );
@@ -87,7 +87,7 @@ export function DrawerIcons({ show }: { show: ("dictionary" | "filter")[] }) {
   return (
     <div className="flex gap-4">
       {show.includes("filter") && (
-        <div
+        <button
           onClick={() => setSplitView("filter")}
           className={cx("cursor-pointer flex-0", {
             "text-(--text-hl)": splitView == "filter",
@@ -95,10 +95,10 @@ export function DrawerIcons({ show }: { show: ("dictionary" | "filter")[] }) {
           })}
         >
           <IconTune className="w-8" />
-        </div>
+        </button>
       )}
       {show.includes("dictionary") && (
-        <div
+        <button
           onClick={() => setSplitView("dictionary")}
           className={cx("cursor-pointer flex-0", {
             "text-(--text-hl)": splitView == "dictionary",
@@ -106,7 +106,7 @@ export function DrawerIcons({ show }: { show: ("dictionary" | "filter")[] }) {
           })}
         >
           <IconImportContacts className="w-8" />
-        </div>
+        </button>
       )}
     </div>
   );

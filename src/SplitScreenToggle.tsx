@@ -30,7 +30,7 @@ export function IconSplitscreenRight({ className }: { className?: string }) {
 export function SplitScreenToggle() {
   const { splitScreenSide, setSplitScreenSide } = useGlobal();
   return (
-    <div
+    <button
       className="sm:block hidden opacity-50 hover:opacity-100 cursor-pointer"
       onClick={() => {
         if (splitScreenSide === SplitScreenSide.left)
@@ -45,6 +45,6 @@ export function SplitScreenToggle() {
       {splitScreenSide === SplitScreenSide.right && (
         <IconSplitscreenRight className="w-6" />
       )}
-    </div>
+    </button>
   );
 }

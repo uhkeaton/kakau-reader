@@ -46,7 +46,7 @@ export function WaihonaHomePage() {
       <div className="mb-8">
         {stories.map((s, i) => {
           return (
-            <div
+            <button
               className={cx("cursor-pointer rounded", {
                 "border-b border-(--line)": i != stories.length - 1,
               })}
@@ -78,7 +78,7 @@ export function WaihonaHomePage() {
                   )}
                 </div>
               </div>
-            </div>
+            </button>
           );
         })}
       </div>

@@ -56,7 +56,7 @@ export function OrthographyToggle() {
   const { orthography, setOrthography, setShowFurigana } = useGlobal();
 
   return (
-    <div
+    <button
       className={cx("cursor-pointer flex items-end justify-end w-full h-full")}
       onClick={() => {
         if (orthography === Orthography.marked) {
@@ -81,6 +81,6 @@ export function OrthographyToggle() {
           })}
         />
       </div>
-    </div>
+    </button>
   );
 }
