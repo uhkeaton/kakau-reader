@@ -1,18 +1,19 @@
 import cx from "classnames";
 import { useGlobal } from "./useGlobal";
-import { Levels } from "./UnmarkedLevels";
+import { Levels, LevelsSkeleton } from "./UnmarkedLevels";
 import { DrawerIcons } from "./DrawerNav";
 import { Orthography } from "./url";
 import { SpaceBar } from "./Spacebar";
 import { useParams } from "react-router";
 import {
+  viteDataLanguage,
   viteEnableUnmarkedOrthographyLevelsButton,
   viteEnableUnmarkedOrthographySettingsButton,
 } from "./env";
 
 export function StickyFooter() {
   const { waihonaId, mooleloId } = useParams();
-  const { text, orthography } = useGlobal();
+  const { text, orthography, showFurigana, setShowFurigana } = useGlobal();
 
   const hide =
     orthography == Orthography.marked ||
@@ -31,11 +32,19 @@ export function StickyFooter() {
       <div className="flex justify-between print:hidden pt-4 pb-4">
         <div className="flex-0"></div>
         <div className="flex-1 flex justify-center gap-4 items-center">
-          {viteEnableUnmarkedOrthographySettingsButton && (
-            <DrawerIcons show={["filter"]} />
-          )}
+          {viteEnableUnmarkedOrthographySettingsButton &&
+            // Levels are only supported for Hawaiian
+            viteDataLanguage === "hawaiian" && (
+              <DrawerIcons show={["filter"]} />
+            )}
           <SpaceBar />
-          {viteEnableUnmarkedOrthographyLevelsButton && <Levels />}
+          {viteEnableUnmarkedOrthographyLevelsButton &&
+          // Levels are only supported for Hawaiian
+          viteDataLanguage === "hawaiian" ? (
+            <Levels />
+          ) : (
+            <LevelsSkeleton />
+          )}
         </div>
 
         <div className="flex-0"></div>

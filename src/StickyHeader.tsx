@@ -7,8 +7,8 @@ import { useGlobal } from "./useGlobal";
 import cx from "classnames";
 import { BackButton } from "./BackButton";
 import {
+  viteEnableDictionaryButton,
   viteEnableFontSizeButton,
-  viteEnableNavDrawerButton,
   viteEnableOrthographyButton,
 } from "./env";
 
@@ -19,7 +19,7 @@ export function StickyNav() {
       <div className="bg-(--bg-base) flex gap-2 justify-between print:hidden pt-4 pb-2 border-b border-(--line)">
         <div className="flex gap-4">
           <BackButton /*  */ />
-          {viteEnableNavDrawerButton && <DrawerIcons show={["dictionary"]} />}
+          {viteEnableDictionaryButton && <DrawerIcons show={["dictionary"]} />}
         </div>
         <div></div>
         <div className="flex-0 flex gap-8 pr-4">

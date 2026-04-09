@@ -36,18 +36,20 @@ export function WaihonaHomePage() {
   );
 
   return (
-    <div className="min-h-dvh">
-      <div className="mb-6">
-        <Title>{currentCollection?.title}</Title>
+    <div className="min-h-dvh flex flex-col">
+      <div className="border-b border-(--line) mx-3 mb-6">
+        <div className="mb-6">
+          <Title>{currentCollection?.title}</Title>
+        </div>
+        {currentCollection?.descriptionMarkdown && (
+          <Markdown markdown={currentCollection?.descriptionMarkdown} />
+        )}
       </div>
-      {currentCollection?.descriptionMarkdown && (
-        <Markdown markdown={currentCollection?.descriptionMarkdown} />
-      )}
       <div className="mb-8">
         {stories.map((s, i) => {
           return (
             <div
-              className={cx("cursor-pointer rounded", {
+              className={cx("cursor-pointer", {
                 "border-b border-(--line)": i != stories.length - 1,
               })}
               onClick={() => {
@@ -82,6 +84,13 @@ export function WaihonaHomePage() {
           );
         })}
       </div>
+      {currentCollection?.footerMarkdown && (
+        <div className="flex-1 flex items-end">
+          <div className="border-t border-(--line) mx-3 mt-6">
+            <Markdown markdown={currentCollection?.footerMarkdown} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

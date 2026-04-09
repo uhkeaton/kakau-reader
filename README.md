@@ -2,9 +2,13 @@
 
 Kakau reader is a generic digital library user interface with support for marked and unmarked text in Hawaiian and Samoan languages.
 
-# Demo Screenshot
+# Hawaiian Demo Screenshot
 
 ![alt text](readme-screenshot.png)
+
+# Samoan Demo Screenshot
+
+![alt text](readme-2.png)
 
 ## Marked and Unmarked Text
 

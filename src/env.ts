@@ -2,7 +2,7 @@
 export const viteCollectionsUrl = import.meta.env.VITE_COLLECTIONS_URL;
 
 //  Languages
-type DataLanguage = "hawaiian" | "samoan"
+export type DataLanguage = "hawaiian" | "samoan"
 export const viteDataLanguage: DataLanguage = import.meta.env.VITE_DATA_LANGUAGE;
 
 type UILanguage = "hawaiian" | "english"

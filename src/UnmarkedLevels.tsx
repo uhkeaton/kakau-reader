@@ -109,3 +109,21 @@ export function Levels() {
     </div>
   );
 }
+
+export function LevelsSkeleton() {
+  const { showFurigana, setShowFurigana } = useGlobal();
+  return (
+    <div
+      className={cx(
+        "cursor-pointer rounded-full p-1 opacity-75 hover:opacity-100 min-w-8 min-h-8 border-4",
+        {
+          "border-[#56d926]": showFurigana,
+          "border-neutral-400": !showFurigana,
+        },
+      )}
+      onClick={() => {
+        setShowFurigana((s) => !s);
+      }}
+    />
+  );
+}

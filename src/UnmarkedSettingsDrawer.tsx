@@ -4,7 +4,7 @@ import {
   niceToShowLower,
   pronounsLower,
   closedClassSomeCollisionsLower,
-} from "./unmarked.helpers";
+} from "./unmarked.hawaiian";
 import cx from "classnames";
 import { Title } from "./Title";
 import { predicateSortWithoutOkina } from "./helpers";

@@ -12,7 +12,7 @@ import {
   numbersLower,
   openClassOkinaLevelOneLower,
   openClassVowelLevelOneLower,
-} from "./unmarked.helpers";
+} from "./unmarked.hawaiian";
 import { Title } from "./Title";
 
 export function UnmarkedOleloMaamauDialog() {

@@ -4,7 +4,7 @@ function replaceTWithK(str: string): string {
   return str.replace(/K/g, "T").replace(/k/g, "t");
 }
 
-function generate(upper: string[]) {
+export function generate(upper: string[]) {
   const lower = upper.map((i) => i.toLowerCase());
   const niihauUpper = upper.map(replaceTWithK);
   const niihauLower = lower.map(replaceTWithK);
@@ -37,7 +37,7 @@ export const [pronouns, pronounsLower] = generate([
   "Aʻu",
 ]);
 
-export function shouldShow(word: string, showMaiGroup: boolean) {
+export function shouldShowHawaiian(word: string, showMaiGroup: boolean) {
   const list = [...pronouns];
   if (showMaiGroup) list.push(...niceToShow);
   return list.includes(word);
@@ -111,7 +111,7 @@ export const [closedClassSomeCollisions, closedClassSomeCollisionsLower] =
     ],
   ]);
 
-export function shouldKnow(word: string, s: VisibilitySettings) {
+export function shouldKnowHawaiian(word: string, s: VisibilitySettings) {
   const list = [...pronouns];
   if (!s["closedClassNoCollisions"]) {
     list.push(...closedClassNoCollisions);

@@ -22,8 +22,9 @@ export const CollectionSchema = z.object({
   id: z.string(),
   title: z.string(),
   subtitle: z.string(),
-  descriptionMarkdown: z.string().optional(),
   previewImageSrc: z.string().optional(),
+  descriptionMarkdown: z.string().optional(),
+  footerMarkdown: z.string().optional(),
   stories: z.array(StorySchema),
 });
 

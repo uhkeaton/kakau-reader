@@ -1,14 +1,8 @@
-import { shouldKnow, shouldShow } from "./unmarked.helpers";
 import { useGlobal } from "./useGlobal";
-import {
-  coerceOkinas,
-  removeDoubleVowelOkinas,
-  removeHawaiianDiacritics,
-  removePunctuation,
-} from "./helpers";
 import { setDictionaryLoading } from "./dictionaryLoading";
 import { Orthography } from "./url";
 import cx from "classnames";
+import { calculateFurigana } from "./furigana";
 
 function getFontSize(num: number): number {
   if (num === 15) return 44;
@@ -55,6 +49,8 @@ export function Line({ text }: { text: string }) {
   } = useGlobal();
   const opacity = showFurigana ? 40 : 0;
 
+  const isMarked = orthography === Orthography.marked;
+
   return (
     <div
       style={{
@@ -63,40 +59,22 @@ export function Line({ text }: { text: string }) {
     >
       {text.split(" ").map((token) => {
         //
-        const { leading, core: word, trailing } = removePunctuation(token);
-        const removed = removeHawaiianDiacritics(word);
-        const removedDoubleVowel = removeDoubleVowelOkinas(word);
-        const coercedOkina = coerceOkinas(word);
-        const onlyHasDoubleVowelOkina = removed == removedDoubleVowel;
-
-        const shouldShowFull = shouldShow(
-          coercedOkina,
-          visibilitySettings["setting-show-mai-group"],
-        );
-
-        const isMarked = orthography === Orthography.marked;
-
-        const showRuby =
-          word != removed &&
-          !onlyHasDoubleVowelOkina &&
-          !shouldKnow(coercedOkina, visibilitySettings) &&
-          !shouldShowFull;
-
-        const text = shouldShowFull ? word : removed;
+        const { leading, trailing, original, unmarked, showRuby, base } =
+          calculateFurigana(token, visibilitySettings);
 
         return (
           <>
             {" "}
             <span
               onClick={() => {
-                if (query === removed) {
+                if (query === unmarked) {
                   // the success event wont fire if the
                   // dictionary page is already loaded in the frame
                   // In that case, just open it
                   setSplitView("dictionary");
                 } else {
                   setDictionaryLoading(true);
-                  setQuery(removed);
+                  setQuery(unmarked);
                 }
               }}
             >
@@ -107,7 +85,7 @@ export function Line({ text }: { text: string }) {
                     "hover:underline hover:opacity-50": true,
                   })}
                 >
-                  {isMarked ? word : text}
+                  {isMarked ? original : base}
                 </span>
                 {trailing}
                 <rt
@@ -116,7 +94,7 @@ export function Line({ text }: { text: string }) {
                     opacity: showRuby && !isMarked ? `${opacity}%` : "0%",
                   }}
                 >
-                  {word}
+                  {original}
                 </rt>
               </ruby>
             </span>
