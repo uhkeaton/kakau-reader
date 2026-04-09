@@ -33,16 +33,22 @@ export const viteNavDrawerAllowedDestinations = (JSON.parse(
 ) || []) as string[];
 
 // Buttons
-export const viteEnableNavLogo = import.meta.env.VITE_ENABLE_NAV_LOGO;
-export const viteEnableThemeButton = import.meta.env.VITE_ENABLE_THEME_BUTTON;
-export const viteEnablePrintButton = import.meta.env.VITE_ENABLE_PRINT_BUTTON;
-export const viteEnableFontSizeButton = import.meta.env.VITE_ENABLE_FONT_SIZE_BUTTON;
-export const viteEnableNavDrawerButton = import.meta.env.VITE_ENABLE_NAV_DRAWER_BUTTON;
-export const viteEnableDictionaryButton = import.meta.env.VITE_ENABLE_DICTIONARY_BUTTON;
-export const viteEnableOrthographyButton = import.meta.env.VITE_ENABLE_ORTHOGRAPHY_BUTTON;
-export const viteEnableUnmarkedOrthographyLevelsButton = import.meta.env.VITE_ENABLE_UNMARKED_ORTHOGRAPHY_LEVELS_BUTTON;
-export const viteEnableUnmarkedOrthographySettingsButton = import.meta.env.VITE_ENABLE_UNMARKED_ORTHOGRAPHY_SETTINGS_BUTTON;
+export const viteEnableNavLogo = isTrue(import.meta.env.VITE_ENABLE_NAV_LOGO);
+export const viteEnableThemeButton = isTrue(import.meta.env.VITE_ENABLE_THEME_BUTTON);
+export const viteEnablePrintButton = isTrue(import.meta.env.VITE_ENABLE_PRINT_BUTTON);
+export const viteEnableFontSizeButton = isTrue(import.meta.env.VITE_ENABLE_FONT_SIZE_BUTTON);
+export const viteEnableNavDrawerButton = isTrue(import.meta.env.VITE_ENABLE_NAV_DRAWER_BUTTON);
+export const viteEnableDictionaryButton = isTrue(import.meta.env.VITE_ENABLE_DICTIONARY_BUTTON);
+export const viteEnableOrthographyButton = isTrue(import.meta.env.VITE_ENABLE_ORTHOGRAPHY_BUTTON);
+export const viteEnableUnmarkedOrthographyLevelsButton = isTrue(import.meta.env.VITE_ENABLE_UNMARKED_ORTHOGRAPHY_LEVELS_BUTTON);
+export const viteEnableUnmarkedOrthographySettingsButton = isTrue(import.meta.env.VITE_ENABLE_UNMARKED_ORTHOGRAPHY_SETTINGS_BUTTON);
 
 // Sections
-export const viteEnableSectionCollections = import.meta.env.VITE_ENABLE_SECTION_COLLECTIONS;
-export const viteEnableSectionForm = import.meta.env.VITE_ENABLE_SECTION_FORM;
+export const viteEnableSectionCollections = isTrue(import.meta.env.VITE_ENABLE_SECTION_COLLECTIONS);
+export const viteEnableSectionForm = isTrue(import.meta.env.VITE_ENABLE_SECTION_FORM);
+
+
+
+function isTrue(str: string | undefined) {
+  return (str || "").toLowerCase() === "true";
+}
