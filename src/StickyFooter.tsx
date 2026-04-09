@@ -13,7 +13,7 @@ import {
 
 export function StickyFooter() {
   const { waihonaId, mooleloId } = useParams();
-  const { text, orthography, showFurigana, setShowFurigana } = useGlobal();
+  const { text, orthography } = useGlobal();
 
   const hide =
     orthography == Orthography.marked ||
