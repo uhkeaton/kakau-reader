@@ -20,12 +20,12 @@ export function FontSizeMenu() {
 
   return (
     <div>
-      <div onClick={handleClick}>
+      <button onClick={handleClick}>
         <div className="cursor-pointer opacity-50 hover:opacity-100">
           <span className="lexend-500 text-md mr-0.5">A</span>
           <span className="lexend-400 text-2xl">A</span>
         </div>
-      </div>
+      </button>
       <Popover
         id={id}
         open={open}
@@ -66,7 +66,7 @@ export function FontSizeMenu() {
 const FONT_MIN = 1;
 const FONT_MAX = 15;
 
-function clamp(num: number) {
+export function clamp(num: number) {
   return Math.max(Math.min(num, FONT_MAX), FONT_MIN);
 }
 
@@ -104,7 +104,7 @@ function BinaryButtons({
 }) {
   return (
     <div className="h-8 bg-gray-300/40  rounded-2xl inline-flex items-center overflow-hidden cursor-pointer select-none">
-      <div
+      <button
         onClick={onClickLeft}
         className={cx(
           "text-center inline-flex justify-center items-center h-full",
@@ -112,9 +112,9 @@ function BinaryButtons({
         )}
       >
         {left}
-      </div>
+      </button>
       <div className="h-2/3 border-r border-neutral-400" />
-      <div
+      <button
         onClick={onClickRight}
         className={cx(
           "text-center inline-flex justify-center items-center h-full",
@@ -122,7 +122,7 @@ function BinaryButtons({
         )}
       >
         {right}
-      </div>
+      </button>
     </div>
   );
 }

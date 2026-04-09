@@ -75,7 +75,7 @@ export function Levels() {
   return (
     <div className="">
       <>
-        <div
+        <button
           className={cx(
             "cursor-pointer rounded-full p-1 opacity-75 hover:opacity-100",
             {
@@ -104,7 +104,7 @@ export function Levels() {
             if (is3) return <Number text={"3"} />;
             return <IconDoNotDisturb className="w-9" />;
           })()}
-        </div>
+        </button>
       </>
     </div>
   );

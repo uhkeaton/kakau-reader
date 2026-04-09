@@ -8,25 +8,11 @@ import {
 } from "./helpers";
 import { setDictionaryLoading } from "./dictionaryLoading";
 import { Orthography } from "./url";
+import { clamp } from "./FontSizeMenu";
 import cx from "classnames";
 
 function getFontSize(num: number): number {
-  if (num === 15) return 44;
-  if (num === 14) return 42;
-  if (num === 13) return 40;
-  if (num === 12) return 38;
-  if (num === 11) return 36;
-  if (num === 10) return 34;
-  if (num === 9) return 32;
-  if (num === 8) return 30;
-  if (num === 7) return 28;
-  if (num === 6) return 26;
-  if (num === 5) return 24;
-  if (num === 4) return 22;
-  if (num === 3) return 20;
-  if (num === 2) return 18;
-  if (num === 1) return 16;
-  return 16;
+  return 14 + clamp(num) * 2;
 }
 
 export function LineContainer({ children }: { children: React.ReactNode }) {

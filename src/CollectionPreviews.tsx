@@ -80,7 +80,7 @@ export function CollectionPreviews() {
       </CollectionPreviewContainer>
       {notHasPreviewImage.map((c) => {
         return (
-          <div
+          <button
             className="cursor-pointer mb-5 rounded-lg bg-(--bg-secondary) overflow-hidden"
             onClick={() => {
               handleClick(c.id);
@@ -94,7 +94,7 @@ export function CollectionPreviews() {
                 <span className="text-base opacity-65">{c.subtitle}</span>
               </div>
             </div>
-          </div>
+          </button>
         );
       })}
     </>

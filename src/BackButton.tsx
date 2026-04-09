@@ -6,7 +6,7 @@ export function BackButton() {
   const { waihonaId, mooleloId } = useParams();
   if (!waihonaId && !mooleloId) return <></>;
   return (
-    <div
+    <button
       onClick={() => {
         if (!mooleloId) {
           navigate({
@@ -23,6 +23,6 @@ export function BackButton() {
       className={"cursor-pointer flex-0 opacity-50 hover:opacity-100"}
     >
       <IconArrowBack className="w-8" />
-    </div>
+    </button>
   );
 }
