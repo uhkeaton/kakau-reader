@@ -5,17 +5,17 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Section } from "./UnmarkedSettingsDrawer";
+import { Section } from "./FuriganaSettingsDrawer";
 import {
   closedClassNoCollisionsLower,
   namesUpper,
   numbersLower,
   openClassOkinaLevelOneLower,
   openClassVowelLevelOneLower,
-} from "./unmarked.hawaiian";
+} from "./furigana.hawaiian";
 import { Title } from "./Title";
 
-export function UnmarkedOleloMaamauDialog() {
+export function FuriganaNoCollisionsDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

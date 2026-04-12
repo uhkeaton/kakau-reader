@@ -55,7 +55,7 @@ function isSelected(
   });
 }
 
-export function Levels() {
+export function FuriganaLevels() {
   const {
     orthography,
     setOrthography,

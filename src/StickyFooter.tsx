@@ -1,6 +1,6 @@
 import cx from "classnames";
 import { useGlobal } from "./useGlobal";
-import { Levels, LevelsSkeleton } from "./UnmarkedLevels";
+import { FuriganaLevels, LevelsSkeleton } from "./FuriganaLevels";
 import { DrawerIcons } from "./DrawerNav";
 import { Orthography } from "./url";
 import { SpaceBar } from "./Spacebar";
@@ -41,7 +41,7 @@ export function StickyFooter() {
           {viteEnableUnmarkedOrthographyLevelsButton &&
           // Levels are only supported for Hawaiian
           viteDataLanguage === "hawaiian" ? (
-            <Levels />
+            <FuriganaLevels />
           ) : (
             <LevelsSkeleton />
           )}

@@ -37,7 +37,7 @@ export function LineContainer({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function Line({ text }: { text: string }) {
+export function FuriganaLine({ text }: { text: string }) {
   const {
     orthography,
     showFurigana,

@@ -1,5 +1,5 @@
 import cx from "classnames";
-import { UnmarkedSettingsDrawer } from "./UnmarkedSettingsDrawer";
+import { FuriganaSettingsDrawer } from "./FuriganaSettingsDrawer";
 import { Dictionary } from "./Dictionary";
 import { isLeftOpen, isRightOpen } from "./sidebar.helpers";
 import { useGlobal } from "./useGlobal";
@@ -22,7 +22,7 @@ function Sidebar() {
           block: splitView == "filter",
         })}
       >
-        <UnmarkedSettingsDrawer />
+        <FuriganaSettingsDrawer />
       </div>
     </>
   );

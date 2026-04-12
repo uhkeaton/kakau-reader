@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router";
-import { IconArrowBack } from "./material/IconArrowBack";
+import { IconArrowBack } from "./icons";
 
 export function BackButton() {
   const navigate = useNavigate();

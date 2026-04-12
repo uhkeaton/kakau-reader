@@ -1,4 +1,4 @@
-import { generate } from "./unmarked.hawaiian";
+import { generate } from "./furigana.hawaiian";
 
 const [pronouns] = generate(["Laʻu", "Loʻu", "Saʻu", "Soʻu", "Oʻu", "Aʻu"]);
 

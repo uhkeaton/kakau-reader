@@ -5,8 +5,8 @@ import {
   removeHawaiianDiacritics,
   removePunctuation,
 } from "./helpers";
-import { shouldKnowHawaiian, shouldShowHawaiian } from "./unmarked.hawaiian";
-import { shouldKnowSamoan, shouldShowSamoan } from "./unmarked.samoan";
+import { shouldKnowHawaiian, shouldShowHawaiian } from "./furigana.hawaiian";
+import { shouldKnowSamoan, shouldShowSamoan } from "./furigana.samoan";
 import type { VisibilitySettings } from "./useGlobal";
 
 type FuriganaCalculation = {

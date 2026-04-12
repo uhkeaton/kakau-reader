@@ -5,7 +5,7 @@ import cx from "classnames";
 import { SplitScreenToggle } from "./SplitScreenToggle";
 import { Button } from "@mui/material";
 import { viteEnableUnmarkedOrthographyLevelsButton } from "./env";
-import { Levels } from "./UnmarkedLevels";
+import { FuriganaLevels } from "./FuriganaLevels";
 
 export const IconImportContacts = ({ className }: { className?: string }) => {
   return (
@@ -67,7 +67,7 @@ export function UnmarkedSettingsDrawerHeader() {
       <div className="w-full flex justify-between items-center gap-4 p-4">
         <div className="flex gap-2 items-center">
           <SplitScreenToggle />
-          {viteEnableUnmarkedOrthographyLevelsButton && <Levels />}
+          {viteEnableUnmarkedOrthographyLevelsButton && <FuriganaLevels />}
         </div>
         <div
           className="opacity-50 hover:opacity-100 cursor-pointer"

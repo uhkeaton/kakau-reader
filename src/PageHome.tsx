@@ -7,7 +7,7 @@ import { SmVis, Block } from "./Vis";
 import { Title } from "./Title";
 import { label } from "./labels";
 import { IconDelete } from "./material/IconDelete";
-import { Line, LineContainer } from "./Line";
+import { FuriganaLine, LineContainer } from "./FuriganaLine";
 import { PrintButton } from "./PrintButton";
 import { CollectionPreviews } from "./CollectionPreviews";
 import {
@@ -144,7 +144,7 @@ export function HomePage() {
         <div className="min-h-[80dvh] pb-16">
           <LineContainer>
             {text.split("\n").map((line) => {
-              return <Line text={line} />;
+              return <FuriganaLine text={line} />;
             })}
           </LineContainer>
         </div>

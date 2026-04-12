@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGlobal } from "./useGlobal";
 import { Title } from "./Title";
-import { Line, LineContainer } from "./Line";
+import { FuriganaLine, LineContainer } from "./FuriganaLine";
 import { formatHawaiianDate } from "./date";
 import { PrintButton } from "./PrintButton";
 import { viteEnablePrintButton } from "./env";
@@ -46,7 +46,7 @@ export function MooleloPage() {
       )}
       <LineContainer>
         {currentMoolelo?.paragraphs.map((p) => {
-          return <Line text={p.text} />;
+          return <FuriganaLine text={p.text} />;
         })}
       </LineContainer>
     </div>
