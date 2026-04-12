@@ -1,4 +1,4 @@
-import { IconPrint } from "./material/IconPrint";
+import { IconPrint } from "./icons";
 
 export function PrintButton() {
   return (

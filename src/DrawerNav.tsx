@@ -1,6 +1,6 @@
-import { IconTune } from "./material/IconTune";
+import { IconTune } from "./icons";
 import { useGlobal } from "./useGlobal";
-import { IconClose } from "./material/IconClose";
+import { IconClose } from "./icons";
 import cx from "classnames";
 import { SplitScreenToggle } from "./SplitScreenToggle";
 import { Button } from "@mui/material";

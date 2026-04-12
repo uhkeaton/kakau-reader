@@ -1,6 +1,6 @@
 import cx from "classnames";
 import { Orthography } from "./url";
-import { IconDoNotDisturb } from "./material/IconDoNotDisturb";
+import { IconDoNotDisturb } from "./icons";
 import { useGlobal, type VisibilitySettings } from "./useGlobal";
 
 type UnmarkedLevelItem = {

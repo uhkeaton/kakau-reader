@@ -1,12 +1,12 @@
 import { Button } from "@mui/material";
 import TextArea from "./TextArea";
-import { IconCheck } from "./material/IconCheck";
-import { IconEdit } from "./material/IconEdit";
+import { IconCheck } from "./icons";
+import { IconEdit } from "./icons";
 import { useGlobal } from "./useGlobal";
 import { SmVis, Block } from "./Vis";
 import { Title } from "./Title";
 import { label } from "./labels";
-import { IconDelete } from "./material/IconDelete";
+import { IconDelete } from "./icons";
 import { FuriganaLine, LineContainer } from "./FuriganaLine";
 import { PrintButton } from "./PrintButton";
 import { CollectionPreviews } from "./CollectionPreviews";
