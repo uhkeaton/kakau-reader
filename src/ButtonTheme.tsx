@@ -4,7 +4,7 @@ import { useGlobal } from "./useGlobal";
 import { StyledButton } from "./StyledButton";
 import { IconDarkMode, IconLightMode } from "./icons";
 
-export function ThemeToggle() {
+export function ButtonTheme() {
   const { theme, setTheme } = useGlobal();
   const isDarkMode = theme === ThemeMode.dark;
 

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { IconArrowBack } from "./icons";
 
-export function BackButton() {
+export function ButtonBack() {
   const navigate = useNavigate();
   const { waihonaId, mooleloId } = useParams();
   if (!waihonaId && !mooleloId) return <></>;

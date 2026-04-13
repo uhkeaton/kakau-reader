@@ -1,7 +1,7 @@
 import cx from "classnames";
 import { useGlobal } from "./useGlobal";
 import { FuriganaLevels, LevelsSkeleton } from "./FuriganaLevels";
-import { DrawerIcons } from "./DrawerNav";
+import { ButtonFuriganaSettings } from "./ButtonFuriganaSettings";
 import { Orthography } from "./url";
 import { SpaceBar } from "./Spacebar";
 import { useParams } from "react-router";
@@ -34,9 +34,7 @@ export function StickyFooter() {
         <div className="flex-1 flex justify-center gap-4 items-center">
           {viteEnableUnmarkedOrthographySettingsButton &&
             // Levels are only supported for Hawaiian
-            viteDataLanguage === "hawaiian" && (
-              <DrawerIcons show={["filter"]} />
-            )}
+            viteDataLanguage === "hawaiian" && <ButtonFuriganaSettings />}
           <SpaceBar />
           {viteEnableUnmarkedOrthographyLevelsButton &&
           // Levels are only supported for Hawaiian

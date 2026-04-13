@@ -15,7 +15,7 @@ import {
 } from "./furigana.hawaiian";
 import { Title } from "./Title";
 
-export function FuriganaNoCollisionsDialog() {
+export function FuriganaCommonWordsDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

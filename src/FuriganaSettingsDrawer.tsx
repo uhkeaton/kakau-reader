@@ -9,7 +9,7 @@ import cx from "classnames";
 import { Title } from "./Title";
 import { predicateSortWithoutOkina } from "./helpers";
 import { useGlobal, type VisibilitySettings } from "./useGlobal";
-import { FuriganaNoCollisionsDialog } from "./FuriganaNoCollisionsDialog";
+import { FuriganaCommonWordsDialog } from "./FuriganaCommonWordsDialog";
 import { label } from "./labels";
 import { UnmarkedSettingsDrawerHeader } from "./DrawerNav";
 
@@ -43,7 +43,7 @@ export function FuriganaSettingsDrawer() {
             ids={["openClassLevelOne", "closedClassNoCollisions"]}
             items={closedClassNoCollisionsLower}
           >
-            <FuriganaNoCollisionsDialog />
+            <FuriganaCommonWordsDialog />
           </Section>
         </div>
         <hr className="opacity-20 mx-16" />
