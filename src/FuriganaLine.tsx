@@ -59,7 +59,7 @@ export function FuriganaLine({ text }: { text: string }) {
     >
       {text.split(" ").map((token) => {
         //
-        const { leading, trailing, original, unmarked, showRuby, base } =
+        const { leading, trailing, core, unmarked, showRuby, base } =
           calculateFurigana(token, visibilitySettings);
 
         return (
@@ -85,7 +85,7 @@ export function FuriganaLine({ text }: { text: string }) {
                     "hover:underline hover:opacity-50": true,
                   })}
                 >
-                  {isMarked ? original : base}
+                  {isMarked ? core : base}
                 </span>
                 {trailing}
                 <rt
@@ -94,7 +94,7 @@ export function FuriganaLine({ text }: { text: string }) {
                     opacity: showRuby && !isMarked ? `${opacity}%` : "0%",
                   }}
                 >
-                  {original}
+                  {core}
                 </rt>
               </ruby>
             </span>

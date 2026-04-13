@@ -7,7 +7,7 @@ import {
 } from "./furigana.hawaiian";
 import cx from "classnames";
 import { Title } from "./Title";
-import { predicateSortWithoutOkina } from "./helpers";
+import { predicateSortWithoutOkina } from "./orthography";
 import { useGlobal, type VisibilitySettings } from "./useGlobal";
 import { FuriganaCommonWordsDialog } from "./FuriganaCommonWordsDialog";
 import { label } from "./labels";

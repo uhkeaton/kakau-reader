@@ -1,10 +1,10 @@
 import { viteDataLanguage } from "./env";
 import {
-  coerceOkinas,
+  normalizeOkinas,
   removeDoubleVowelOkinas,
   removeHawaiianDiacritics,
   removePunctuation,
-} from "./helpers";
+} from "./orthography";
 import { shouldKnowHawaiian, shouldShowHawaiian } from "./furigana.hawaiian";
 import { shouldKnowSamoan, shouldShowSamoan } from "./furigana.samoan";
 import type { VisibilitySettings } from "./useGlobal";
@@ -12,7 +12,7 @@ import type { VisibilitySettings } from "./useGlobal";
 type FuriganaCalculation = {
   leading: string;
   trailing: string;
-  original: string;
+  core: string;
   unmarked: string;
   showRuby: boolean;
   base: string;
@@ -36,44 +36,44 @@ function calculateHawaiianFurigana(
   token: string,
   visibilitySettings: VisibilitySettings,
 ): FuriganaCalculation {
-  const { leading, original, trailing } = removePunctuation(token);
-  const unmarked = removeHawaiianDiacritics(original);
-  const removedDoubleVowel = removeDoubleVowelOkinas(original);
-  const coercedOkina = coerceOkinas(original);
+  const { leading, core, trailing } = removePunctuation(token);
+  const unmarked = removeHawaiianDiacritics(core);
+  const removedDoubleVowel = removeDoubleVowelOkinas(core);
+  const normalized = normalizeOkinas(core);
   const onlyHasDoubleVowelOkina = unmarked == removedDoubleVowel;
 
   const shouldShowFull = shouldShowHawaiian(
-    coercedOkina,
+    normalized,
     visibilitySettings["setting-show-mai-group"],
   );
 
   const showRuby =
-    original != unmarked &&
+    core != unmarked &&
     !onlyHasDoubleVowelOkina &&
-    !shouldKnowHawaiian(coercedOkina, visibilitySettings) &&
+    !shouldKnowHawaiian(normalized, visibilitySettings) &&
     !shouldShowFull;
 
-  const base = shouldShowFull ? original : unmarked;
+  const base = shouldShowFull ? core : unmarked;
 
-  return { leading, trailing, original, unmarked, showRuby, base };
+  return { leading, trailing, core, unmarked, showRuby, base };
 }
 
 function calculateSamoanFurigana(token: string): FuriganaCalculation {
-  const { leading, core: original, trailing } = removePunctuation(token);
-  const unmarked = removeHawaiianDiacritics(original);
-  const removedDoubleVowel = removeDoubleVowelOkinas(original);
-  const coercedOkina = coerceOkinas(original);
+  const { leading, core, trailing } = removePunctuation(token);
+  const unmarked = removeHawaiianDiacritics(core);
+  const removedDoubleVowel = removeDoubleVowelOkinas(core);
+  const normalized = normalizeOkinas(core);
   const onlyHasDoubleVowelOkina = unmarked == removedDoubleVowel;
 
-  const shouldShowFull = shouldShowSamoan(coercedOkina);
+  const shouldShowFull = shouldShowSamoan(normalized);
 
   const showRuby =
-    original != unmarked &&
+    core != unmarked &&
     !onlyHasDoubleVowelOkina &&
-    !shouldKnowSamoan(coercedOkina) &&
+    !shouldKnowSamoan(normalized) &&
     !shouldShowFull;
 
-  const base = shouldShowFull ? original : unmarked;
+  const base = shouldShowFull ? core : unmarked;
 
-  return { leading, trailing, original, unmarked, showRuby, base };
+  return { leading, trailing, core, unmarked, showRuby, base };
 }

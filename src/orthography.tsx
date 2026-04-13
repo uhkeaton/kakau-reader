@@ -1,3 +1,5 @@
+import { Orthography } from "./url";
+
 export function predicateSortWithoutOkina(a: string, b: string): number {
   return removeHawaiianDiacritics(a) < removeHawaiianDiacritics(b) ? -1 : 1;
 }
@@ -38,7 +40,7 @@ export function removeDoubleVowelOkinas(text: string): string {
   ); // remove U+0027 APOSTROPHE
 }
 
-export function coerceOkinas(text: string): string {
+export function normalizeOkinas(text: string): string {
   return (
     text
       //
@@ -86,4 +88,10 @@ export function removePunctuation(input: string): ParsedWord {
     core: match[2],
     trailing: match[3],
   };
+}
+
+export function unmarked(orthography: Orthography, str: string) {
+  if (orthography === Orthography.marked) return str;
+  // TODO aole pono ana ka hopena no na pronouns
+  return removeHawaiianDiacritics(str);
 }

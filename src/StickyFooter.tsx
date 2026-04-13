@@ -13,14 +13,14 @@ import {
 
 export function StickyFooter() {
   const { waihonaId, mooleloId } = useParams();
-  const { text, orthography } = useGlobal();
+  const { orthography } = useGlobal();
 
   const hide =
     orthography == Orthography.marked ||
     // is on waihona page
     (waihonaId && !mooleloId) ||
-    // is on home page and no text
-    (!waihonaId && !mooleloId && !text);
+    // is on home page
+    (!waihonaId && !mooleloId);
 
   return (
     <div

@@ -19,8 +19,8 @@ export function StickyNav() {
   return (
     <div className="print:hidden sticky top-0 z-10">
       <div className="bg-(--bg-base) flex gap-2 justify-between print:hidden pt-4 pb-2 border-b border-(--line)">
-        <div className="flex gap-4">
-          <ButtonBack /*  */ />
+        <div className="flex gap-4 items-center">
+          <ButtonBack />
           {viteEnableDictionaryButton && <ButtonDictionary />}
         </div>
         <div></div>

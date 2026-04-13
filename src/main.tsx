@@ -9,6 +9,8 @@ import { ThemeWrapper } from "./Theme.tsx";
 import { HomePage } from "./PageHome.tsx";
 import { WaihonaHomePage, WaihonaPage } from "./PageWaihona.tsx";
 import { MooleloPage } from "./PageMoolelo.tsx";
+import { PageHakahaka } from "./PageHakahaka.tsx";
+import { viteEnableSectionForm } from "./env.ts";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,9 @@ createRoot(document.getElementById("root")!).render(
             <Routes>
               <Route path="/" element={<App />}>
                 <Route index element={<HomePage />} />
+                {viteEnableSectionForm && (
+                  <Route path="/hakahaka" element={<PageHakahaka />} />
+                )}
                 <Route path="/waihona/:waihonaId" element={<WaihonaPage />}>
                   <Route index element={<WaihonaHomePage />} />
                   <Route

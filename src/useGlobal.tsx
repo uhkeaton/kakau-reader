@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import type { SplitView } from "./sidebar.helpers";
 import { useSearchParams } from "react-router";
 import type { Orthography, SplitScreenSide, ThemeMode } from "./url";
@@ -6,8 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchStoryCollections } from "./api.story";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
-
-const keyText = "text";
 
 export type VisibilitySettings = {
   "setting-show-mai-group": boolean;
@@ -23,7 +21,6 @@ function useGlobalContext() {
   });
 
   const [query, setQuery] = useState("");
-
   const [searchParams, setSearchParams] = useSearchParams();
 
   const orthography: Orthography =
@@ -63,29 +60,15 @@ function useGlobalContext() {
       openClassLevelOne: true,
     });
 
-  //
-  const [text, setText] = useState(() => {
-    const stored = localStorage.getItem(keyText);
-    return stored || "";
-  });
-
-  useEffect(() => {
-    localStorage.setItem(keyText, text);
-  }, [text]);
-
   const [showFurigana, setShowFurigana] = useState(true);
 
-  const [isEditing, setIsEditing] = useState(!text);
   const [splitView, setSplitView] = useState<SplitView>(false);
   const [fontSize, setFontSize] = useState(5);
 
   return {
     showFurigana,
     setShowFurigana,
-    isEditing,
-    setIsEditing,
-    text,
-    setText,
+
     splitView,
     setSplitView,
     fontSize,
