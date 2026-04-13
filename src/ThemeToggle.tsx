@@ -1,7 +1,7 @@
 import cx from "classnames";
 import { ThemeMode } from "./url";
 import { useGlobal } from "./useGlobal";
-import { ThemedButton } from "./NavigationDrawer";
+import { StyledButton } from "./StyledButton";
 import { IconDarkMode, IconLightMode } from "./icons";
 
 export function ThemeToggle() {
@@ -9,7 +9,8 @@ export function ThemeToggle() {
   const isDarkMode = theme === ThemeMode.dark;
 
   return (
-    <ThemedButton
+    <StyledButton
+      size="sm"
       onClick={() => {
         if (isDarkMode) setTheme(ThemeMode.light);
         else setTheme(ThemeMode.dark);
@@ -17,6 +18,6 @@ export function ThemeToggle() {
     >
       <IconDarkMode className={cx("w-7", { hidden: !isDarkMode })} />
       <IconLightMode className={cx("w-7", { hidden: isDarkMode })} />
-    </ThemedButton>
+    </StyledButton>
   );
 }

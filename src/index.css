@@ -24,6 +24,7 @@
 :root {
   --visible-light: block;
   --visible-dark: none;
+  --text-primary: rgba(0, 0, 0, 0.87);
   --text-secondary: #606060;
 
   /* borders */
@@ -39,6 +40,7 @@
 :root[data-theme="dark"] {
   --visible-light: none;
   --visible-dark: block;
+  --text-primary: white;
   --text-secondary: #aaaaaa;
 
   /* borders */
@@ -67,6 +69,12 @@
 .visible-dark {
   display: var(--visible-dark);
 }
+
+
+.text-primary {
+  color: var(--text-primary);
+}
+
 .text-secondary {
   color: var(--text-secondary);
 }

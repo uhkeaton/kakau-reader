@@ -1,17 +1,12 @@
 import { StickyNav } from "./StickyHeader";
 import { NavigationDrawer } from "./NavigationDrawer";
-import { ThemeToggle } from "./ThemeToggle";
 import { Logo } from "./Logo";
 import { SidebarLayout } from "./Sidebar";
 import { Outlet } from "react-router";
 import { StickyFooter } from "./StickyFooter";
 import { useLayoutEffect } from "react";
 import { useParams } from "react-router";
-import {
-  viteEnableNavDrawerButton,
-  viteEnableNavLogo,
-  viteEnableThemeButton,
-} from "./env";
+import { viteEnableNavDrawerButton, viteEnableNavLogo } from "./env";
 
 export function App() {
   const { mooleloId, waihonaId } = useParams();
@@ -32,13 +27,7 @@ export function App() {
             </div>
           )}
         </div>
-        <div className="print:hidden flex items-center gap-4">
-          {viteEnableThemeButton && (
-            <div className="opacity-50 hover:opacity-100">
-              <ThemeToggle />
-            </div>
-          )}
-        </div>
+        <div className="print:hidden flex items-center gap-4"></div>
       </div>
       <StickyNav />
       <Outlet />

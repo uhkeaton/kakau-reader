@@ -10,7 +10,9 @@ import {
   viteEnableDictionaryButton,
   viteEnableFontSizeButton,
   viteEnableOrthographyButton,
+  viteEnableThemeButton,
 } from "./env";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function StickyNav() {
   const { theme } = useGlobal();
@@ -22,13 +24,10 @@ export function StickyNav() {
           {viteEnableDictionaryButton && <DrawerIcons show={["dictionary"]} />}
         </div>
         <div></div>
-        <div className="flex-0 flex gap-8 pr-4">
+        <div className="flex-0 flex gap-4 items-center">
           {viteEnableFontSizeButton && <FontSizeMenu />}
-          {viteEnableOrthographyButton && (
-            <div className="pb-1.5">
-              <OrthographyToggle />
-            </div>
-          )}
+          {viteEnableOrthographyButton && <OrthographyToggle />}
+          {viteEnableThemeButton && <ThemeToggle />}
         </div>
       </div>
       <div className="mb-8">

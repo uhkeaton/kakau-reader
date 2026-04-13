@@ -2,38 +2,13 @@ import Drawer from "@mui/material/Drawer";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useGlobal } from "./useGlobal";
-import cx from "classnames";
 import {
   viteNavDrawerAllowedDestinations,
   viteNavDrawerAllowedOrigins,
   viteNavDrawerUrl,
 } from "./env";
 import { IconMenu } from "./icons";
-
-export function ThemedButton({
-  onClick,
-  children,
-  size,
-}: {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  children: React.ReactNode;
-  size?: "sm";
-}) {
-  return (
-    <button
-      className={cx(
-        "rounded-full relative flex justify-center items-center cursor-pointer",
-        {
-          "max-w-12 min-w-12 min-h-12 max-h-12": size != "sm",
-          "max-w-10 min-w-10 min-h-10 max-h-10": size == "sm",
-        },
-      )}
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-}
+import { StyledButton } from "./StyledButton";
 
 export function NavigationDrawer({ anchor }: { anchor: "left" | "right" }) {
   const { theme } = useGlobal();
@@ -46,9 +21,9 @@ export function NavigationDrawer({ anchor }: { anchor: "left" | "right" }) {
   return (
     <>
       <div className="-ml-2 opacity-50 hover:opacity-100">
-        <ThemedButton size="sm" onClick={() => setOpen(true)}>
+        <StyledButton size="sm" onClick={() => setOpen(true)}>
           <IconMenu className="w-8" />
-        </ThemedButton>
+        </StyledButton>
       </div>
       <Drawer
         anchor={anchor}

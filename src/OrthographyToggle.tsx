@@ -2,13 +2,14 @@ import cx from "classnames";
 import { useGlobal } from "./useGlobal";
 import { Orthography } from "./url";
 import { IconAMarked, IconAUnmarked } from "./icons";
+import { StyledButton } from "./StyledButton";
 
 export function OrthographyToggle() {
   const { orthography, setOrthography, setShowFurigana } = useGlobal();
 
   return (
-    <div
-      className={cx("cursor-pointer flex items-end justify-end w-full h-full")}
+    <StyledButton
+      // className={cx("cursor-pointer flex items-end justify-end w-full h-full")}
       onClick={() => {
         if (orthography === Orthography.marked) {
           setShowFurigana(false);
@@ -27,11 +28,11 @@ export function OrthographyToggle() {
           })}
         />
         <IconAUnmarked
-          className={cx("w-4 opacity-50 hover:opacity-100", {
+          className={cx("w-4", {
             hidden: orthography !== Orthography.unmarked,
           })}
         />
       </div>
-    </div>
+    </StyledButton>
   );
 }
