@@ -1,4 +1,3 @@
-import cx from "classnames";
 import { ThemeMode } from "./url";
 import { useGlobal } from "./useGlobal";
 import { StyledButton } from "./StyledButton";
@@ -16,8 +15,8 @@ export function ButtonTheme() {
         else setTheme(ThemeMode.dark);
       }}
     >
-      <IconDarkMode className={cx("w-7", { hidden: !isDarkMode })} />
-      <IconLightMode className={cx("w-7", { hidden: isDarkMode })} />
+      <IconDarkMode className={"w-7 visible-dark"} />
+      <IconLightMode className={"w-7 visible-light"} />
     </StyledButton>
   );
 }

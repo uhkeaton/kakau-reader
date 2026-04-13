@@ -8,7 +8,7 @@ import { Title } from "./Title";
 import { label } from "./labels";
 import { IconDelete } from "./icons";
 import { FuriganaLine, LineContainer } from "./FuriganaLine";
-import { PrintButton } from "./PrintButton";
+import { ButtonPrint } from "./ButtonPrint";
 import { CollectionPreviews } from "./CollectionPreviews";
 import {
   viteEnablePrintButton,
@@ -139,7 +139,7 @@ export function HomePage() {
         <hr className="opacity-10 print:hidden mb-8" />
         <div className="mb-4 flex gap-4 justify-between print:hidden">
           <Title>{label(orthography, "HeaderResult")}</Title>
-          <div>{viteEnablePrintButton && <PrintButton />}</div>
+          <div>{viteEnablePrintButton && <ButtonPrint />}</div>
         </div>
         <div className="min-h-[80dvh] pb-16">
           <LineContainer>

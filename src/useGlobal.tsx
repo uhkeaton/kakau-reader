@@ -3,7 +3,7 @@ import type { SplitView } from "./sidebar.helpers";
 import { useSearchParams } from "react-router";
 import type { Orthography, SplitScreenSide, ThemeMode } from "./url";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCollections } from "./api";
+import { fetchStoryCollections } from "./api.story";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
 
@@ -19,7 +19,7 @@ export type VisibilitySettings = {
 function useGlobalContext() {
   const collectionsQuery = useQuery({
     queryKey: ["collections"],
-    queryFn: fetchCollections,
+    queryFn: fetchStoryCollections,
   });
 
   const [query, setQuery] = useState("");

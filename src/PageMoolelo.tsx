@@ -3,7 +3,7 @@ import { useGlobal } from "./useGlobal";
 import { Title } from "./Title";
 import { FuriganaLine, LineContainer } from "./FuriganaLine";
 import { formatHawaiianDate } from "./date";
-import { PrintButton } from "./PrintButton";
+import { ButtonPrint } from "./ButtonPrint";
 import { viteEnablePrintButton } from "./env";
 
 export function MooleloPage() {
@@ -37,7 +37,7 @@ export function MooleloPage() {
             <span>{subtitle}</span>
           </div>
         </div>
-        <div>{viteEnablePrintButton && <PrintButton />}</div>
+        <div>{viteEnablePrintButton && <ButtonPrint />}</div>
       </div>
       {currentMoolelo?.synopsis && (
         <div className="p-2 rounded-lg bg-(--bg-secondary) print:bg-transparent mb-4">
