@@ -14,6 +14,7 @@ type LabelId =
   | "HeaderForm"
   | "ButtonEdit"
   | "ButtonClearForm"
+  | "ButtonWriteYourself"
   | "HeaderResult";
 
 const hawaiianLabels: Record<LabelId, Labels> = {
@@ -44,6 +45,10 @@ const hawaiianLabels: Record<LabelId, Labels> = {
   ButtonClearForm: {
     marked: "Holoi",
     unmarked: "Holoi",
+  },
+  ButtonWriteYourself: {
+    marked: "Kākau iā ʻoe iho",
+    unmarked: "Kakau ia oe iho",
   },
   HeaderResult: {
     marked: "Hopena",
@@ -79,6 +84,10 @@ const englishLabels: Record<LabelId, Labels> = {
   ButtonClearForm: {
     marked: "Clear",
     unmarked: "Clear",
+  },
+  ButtonWriteYourself: {
+    marked: "Write Yourself",
+    unmarked: "Write Yourself",
   },
   HeaderResult: {
     marked: "Result",

@@ -6,7 +6,6 @@ import { Title } from "./Title";
 import { label } from "./labels";
 import { CollectionPreviews } from "./CollectionPreviews";
 import { viteEnableSectionCollections, viteEnableSectionForm } from "./env";
-import { unmarked } from "./orthography";
 import { useLocation, useNavigate } from "react-router";
 
 export function HomePage() {
@@ -43,21 +42,23 @@ export function HomePage() {
                   )}
                 </div>
                 <Block when={viteEnableSectionForm}>
-                  <Button
-                    color="info"
-                    sx={{ textTransform: "none" }}
-                    onClick={() =>
-                      navigate({
-                        pathname: `/hakahaka`,
-                        search: location.search,
-                      })
-                    }
-                    variant="contained"
-                    className="flex gap-2 text-nowrap"
-                  >
-                    <SmVis>{unmarked(orthography, "Kākau iā ʻoe iho")}</SmVis>{" "}
-                    <IconEdit className="w-5" />
-                  </Button>
+                  <div className="m-2">
+                    <Button
+                      color="info"
+                      sx={{ textTransform: "none" }}
+                      onClick={() =>
+                        navigate({
+                          pathname: `/hakahaka`,
+                          search: location.search,
+                        })
+                      }
+                      variant="contained"
+                      className="flex gap-2 text-nowrap"
+                    >
+                      <SmVis>{label(orthography, "ButtonWriteYourself")}</SmVis>{" "}
+                      <IconEdit className="w-5" />
+                    </Button>
+                  </div>
                 </Block>
               </div>
               <div className="mb-8">

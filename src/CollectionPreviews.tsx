@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useGlobal } from "./useGlobal";
 import { useLocation, useNavigate } from "react-router";
 
@@ -9,7 +9,7 @@ export function CollectionPreviewContainer({
 }) {
   const gridRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const container = gridRef.current;
     if (!container) return;
 
